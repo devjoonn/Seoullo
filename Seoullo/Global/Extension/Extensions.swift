@@ -8,12 +8,25 @@
 import UIKit
 
 extension String {
-    var escapingHTML: String {
-        let patten = "<[^>]+>|&quot;|<b>|</b>" // 필요한 패턴을 |(or기호)와 함꼐 추가하기
+    // html 태그 제거 + html entity들 디코딩.
+    var htmlEscaped: String {
+        guard let encodedData = self.data(using: .utf8) else {
+            return self
+        }
         
-        return self.replacingOccurrences(of: patten,
-                                  with: "",
-                                  options: .regularExpression,
-                                  range: nil)
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        
+        do {
+            let attributed = try NSAttributedString(data: encodedData,
+                                                    options: options,
+                                                    documentAttributes: nil)
+            return attributed.string
+        } catch {
+            return self
+        }
     }
 }
+

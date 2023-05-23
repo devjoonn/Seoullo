@@ -11,6 +11,7 @@
 		47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 47665ADB2A1CABA400A95154 /* SwiftyJSON */; };
 		47665AE02A1CD43A00A95154 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */; };
 		47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AE72A1CD47D00A95154 /* UIFont.swift */; };
+		47665AEB2A1D095E00A95154 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 47665AEA2A1D095E00A95154 /* SwiftSoup */; };
 		4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */; };
 		4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */; };
 		4786C8572A1AF2FF006AAF43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8562A1AF2FF006AAF43 /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */,
+				47665AEB2A1D095E00A95154 /* SwiftSoup in Frameworks */,
 				4786C8712A1AF6C0006AAF43 /* SnapKit in Frameworks */,
 				4786C8742A1AF707006AAF43 /* Alamofire in Frameworks */,
 			);
@@ -203,6 +205,7 @@
 				4786C8702A1AF6C0006AAF43 /* SnapKit */,
 				4786C8732A1AF707006AAF43 /* Alamofire */,
 				47665ADB2A1CABA400A95154 /* SwiftyJSON */,
+				47665AEA2A1D095E00A95154 /* SwiftSoup */,
 			);
 			productName = Seoullo;
 			productReference = 4786C84F2A1AF2FF006AAF43 /* Seoullo.app */;
@@ -236,6 +239,7 @@
 				4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4786C8722A1AF707006AAF43 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 4786C8502A1AF2FF006AAF43 /* Products */;
 			projectDirPath = "";
@@ -490,6 +494,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -513,6 +525,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		47665AEA2A1D095E00A95154 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 		4786C8702A1AF6C0006AAF43 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

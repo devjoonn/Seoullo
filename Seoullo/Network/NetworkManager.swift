@@ -140,7 +140,6 @@ class NetworkManager {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json)
                 let TEducProg = json["TEducProg"]
                 let rows = TEducProg["row"].arrayValue
                 
@@ -148,7 +147,7 @@ class NetworkManager {
                     let dictionaries = rows.map { $0.dictionaryObject } // Convert each JSON object to a dictionary
                     let jsonData = try JSONSerialization.data(withJSONObject: dictionaries, options: [])
                     let rowModels = try JSONDecoder().decode([EduModel].self, from: jsonData)
-                    print(rowModels)
+//                    print(rowModels)
                     completion(rowModels)
                     
                 } catch let DecodingError.dataCorrupted(context) {
