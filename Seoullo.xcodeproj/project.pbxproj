@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AD82A1C98CD00A95154 /* Extensions.swift */; };
+		47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 47665ADB2A1CABA400A95154 /* SwiftyJSON */; };
 		4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */; };
 		4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */; };
 		4786C8572A1AF2FF006AAF43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8562A1AF2FF006AAF43 /* ViewController.swift */; };
@@ -16,9 +18,12 @@
 		4786C8712A1AF6C0006AAF43 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4786C8702A1AF6C0006AAF43 /* SnapKit */; };
 		4786C8742A1AF707006AAF43 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4786C8732A1AF707006AAF43 /* Alamofire */; };
 		4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8762A1AF852006AAF43 /* NetworkManager.swift */; };
+		4786C87D2A1AFE0A006AAF43 /* EmploymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87C2A1AFE0A006AAF43 /* EmploymentModel.swift */; };
+		4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87E2A1B1E4D006AAF43 /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47665AD82A1C98CD00A95154 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4786C84F2A1AF2FF006AAF43 /* Seoullo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seoullo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,8 @@
 		4786C8602A1AF301006AAF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4786C8662A1AF3E6006AAF43 /* BaseTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTapBarController.swift; sourceTree = "<group>"; };
 		4786C8762A1AF852006AAF43 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4786C87C2A1AFE0A006AAF43 /* EmploymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentModel.swift; sourceTree = "<group>"; };
+		4786C87E2A1B1E4D006AAF43 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */,
 				4786C8712A1AF6C0006AAF43 /* SnapKit in Frameworks */,
 				4786C8742A1AF707006AAF43 /* Alamofire in Frameworks */,
 			);
@@ -78,6 +86,8 @@
 			children = (
 				4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */,
 				4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */,
+				4786C87E2A1B1E4D006AAF43 /* Secret.swift */,
+				47665AD82A1C98CD00A95154 /* Extensions.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -125,23 +135,16 @@
 		4786C8752A1AF7A4006AAF43 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				4786C8782A1AF9B7006AAF43 /* InputModel */,
 				4786C8792A1AF9CB006AAF43 /* OutputModel */,
 				4786C8762A1AF852006AAF43 /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		4786C8782A1AF9B7006AAF43 /* InputModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = InputModel;
-			sourceTree = "<group>";
-		};
 		4786C8792A1AF9CB006AAF43 /* OutputModel */ = {
 			isa = PBXGroup;
 			children = (
+				4786C87C2A1AFE0A006AAF43 /* EmploymentModel.swift */,
 			);
 			path = OutputModel;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			packageProductDependencies = (
 				4786C8702A1AF6C0006AAF43 /* SnapKit */,
 				4786C8732A1AF707006AAF43 /* Alamofire */,
+				47665ADB2A1CABA400A95154 /* SwiftyJSON */,
 			);
 			productName = Seoullo;
 			productReference = 4786C84F2A1AF2FF006AAF43 /* Seoullo.app */;
@@ -197,6 +201,7 @@
 			packageReferences = (
 				4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4786C8722A1AF707006AAF43 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 4786C8502A1AF2FF006AAF43 /* Products */;
 			projectDirPath = "";
@@ -225,10 +230,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4786C8572A1AF2FF006AAF43 /* ViewController.swift in Sources */,
+				47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */,
 				4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */,
 				4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */,
 				4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */,
+				4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */,
 				4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */,
+				4786C87D2A1AFE0A006AAF43 /* EmploymentModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +446,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -457,6 +473,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		47665ADB2A1CABA400A95154 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		4786C8702A1AF6C0006AAF43 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */;
