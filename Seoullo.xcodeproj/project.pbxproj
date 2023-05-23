@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AD82A1C98CD00A95154 /* Extensions.swift */; };
 		47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 47665ADB2A1CABA400A95154 /* SwiftyJSON */; };
+		47665AE02A1CD43A00A95154 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */; };
+		47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AE72A1CD47D00A95154 /* UIFont.swift */; };
 		4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */; };
 		4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */; };
 		4786C8572A1AF2FF006AAF43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8562A1AF2FF006AAF43 /* ViewController.swift */; };
@@ -18,12 +20,20 @@
 		4786C8712A1AF6C0006AAF43 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4786C8702A1AF6C0006AAF43 /* SnapKit */; };
 		4786C8742A1AF707006AAF43 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4786C8732A1AF707006AAF43 /* Alamofire */; };
 		4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8762A1AF852006AAF43 /* NetworkManager.swift */; };
-		4786C87D2A1AFE0A006AAF43 /* EmploymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87C2A1AFE0A006AAF43 /* EmploymentModel.swift */; };
+		4786C87D2A1AFE0A006AAF43 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */; };
 		4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87E2A1B1E4D006AAF43 /* Secret.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47665AD82A1C98CD00A95154 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		47665AE12A1CD44700A95154 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		47665AE22A1CD44700A95154 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		47665AE32A1CD44700A95154 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
+		47665AE42A1CD44700A95154 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		47665AE52A1CD44700A95154 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		47665AE62A1CD44700A95154 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		47665AE72A1CD47D00A95154 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		4786C84F2A1AF2FF006AAF43 /* Seoullo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seoullo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +43,7 @@
 		4786C8602A1AF301006AAF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4786C8662A1AF3E6006AAF43 /* BaseTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTapBarController.swift; sourceTree = "<group>"; };
 		4786C8762A1AF852006AAF43 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		4786C87C2A1AFE0A006AAF43 /* EmploymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentModel.swift; sourceTree = "<group>"; };
+		4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		4786C87E2A1B1E4D006AAF43 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +61,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47665ADD2A1CD24A00A95154 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				47665AD82A1C98CD00A95154 /* Extensions.swift */,
+				47665AE72A1CD47D00A95154 /* UIFont.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		47665ADE2A1CD25700A95154 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				47665AE32A1CD44700A95154 /* Cafe24Ssurround.ttf */,
+				47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */,
+				47665AE12A1CD44700A95154 /* NotoSansKR-Black.otf */,
+				47665AE22A1CD44700A95154 /* NotoSansKR-Light.otf */,
+				47665AE52A1CD44700A95154 /* NotoSansKR-Medium.otf */,
+				47665AE62A1CD44700A95154 /* NotoSansKR-Regular.otf */,
+				47665AE42A1CD44700A95154 /* NotoSansKR-Thin.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		4786C8462A1AF2FF006AAF43 = {
 			isa = PBXGroup;
 			children = (
@@ -84,10 +117,11 @@
 		4786C8682A1AF5C4006AAF43 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				47665ADE2A1CD25700A95154 /* Font */,
+				47665ADD2A1CD24A00A95154 /* Extension */,
 				4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */,
 				4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */,
 				4786C87E2A1B1E4D006AAF43 /* Secret.swift */,
-				47665AD82A1C98CD00A95154 /* Extensions.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -144,7 +178,7 @@
 		4786C8792A1AF9CB006AAF43 /* OutputModel */ = {
 			isa = PBXGroup;
 			children = (
-				4786C87C2A1AFE0A006AAF43 /* EmploymentModel.swift */,
+				4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */,
 			);
 			path = OutputModel;
 			sourceTree = "<group>";
@@ -218,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4786C85F2A1AF301006AAF43 /* LaunchScreen.storyboard in Resources */,
+				47665AE02A1CD43A00A95154 /* NotoSansKR-Bold.otf in Resources */,
 				4786C85C2A1AF301006AAF43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,13 +265,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4786C8572A1AF2FF006AAF43 /* ViewController.swift in Sources */,
+				47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */,
 				47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */,
 				4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */,
 				4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */,
 				4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */,
 				4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */,
 				4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */,
-				4786C87D2A1AFE0A006AAF43 /* EmploymentModel.swift in Sources */,
+				4786C87D2A1AFE0A006AAF43 /* NetworkModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

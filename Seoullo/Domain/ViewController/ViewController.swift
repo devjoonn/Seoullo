@@ -12,13 +12,19 @@ class ViewController: UIViewController {
 
     
 //MARK: - Properties
-    
+    let label: UILabel = {
+        $0.text = "Hello world"
+        $0.font = UIFont.notoSansBold(size: 20)
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
     
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         network()
+        setUIandConstraints()
     }
 
     
@@ -37,5 +43,13 @@ class ViewController: UIViewController {
         }
     }
     
-    
+//MARK: - set UI
+    func setUIandConstraints() {
+        view.addSubview(label)
+        
+        label.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+    }
 }
