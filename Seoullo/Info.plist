@@ -4,13 +4,13 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Cafe24Ssurround.ttf</string>
 		<string>NotoSansKR-Thin.otf</string>
 		<string>NotoSansKR-Light.otf</string>
 		<string>NotoSansKR-Regular.otf</string>
 		<string>NotoSansKR-Medium.otf</string>
 		<string>NotoSansKR-Black.otf</string>
 		<string>NotoSansKR-Bold.otf</string>
-		<string>Cafe24Ssurround.ttf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
