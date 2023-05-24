@@ -20,15 +20,15 @@ class BaseTapBarController: UITabBarController {
     private func configureViewControllers() {
         
         // 첫번째 탭
-        let firstVC = ViewController()
+        let firstVC = HomeViewController()
         let nav1 = templateNavigationController(UIImage(systemName: "house"), UIImage(systemName: "house.fill"), title: "Home", viewController: firstVC)
         
         // 두번째 탭
-        let secondVC = ViewController()
+        let secondVC = HomeViewController()
         let nav2 = templateNavigationController(UIImage(systemName: "heart"), UIImage(systemName: "heart.fill"), title: "Heart", viewController: secondVC)
         
         // 세번째 탭
-        let thirdVC = ViewController()
+        let thirdVC = HomeViewController()
         let nav3 = templateNavigationController(UIImage(systemName: "gearshape"), UIImage(systemName: "gearshape.fill"), title: "Setting", viewController: thirdVC)
         
         // 탭들 Setup
@@ -41,6 +41,7 @@ class BaseTapBarController: UITabBarController {
         nav.tabBarItem.image = image
         nav.tabBarItem.selectedImage = selectImage
         nav.tabBarItem.title = title
+        nav.navigationBar.backgroundColor = .orange
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

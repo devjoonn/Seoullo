@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E362A1E26CC00A5BB40 /* HeartViewController.swift */; };
+		47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E382A1E26D700A5BB40 /* SettingViewController.swift */; };
 		47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AD82A1C98CD00A95154 /* Extensions.swift */; };
 		47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 47665ADB2A1CABA400A95154 /* SwiftyJSON */; };
 		47665AE02A1CD43A00A95154 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */; };
 		47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AE72A1CD47D00A95154 /* UIFont.swift */; };
 		47665AEB2A1D095E00A95154 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 47665AEA2A1D095E00A95154 /* SwiftSoup */; };
 		47665AED2A1DE66600A95154 /* DailyQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AEC2A1DE66600A95154 /* DailyQuizView.swift */; };
+		47665AF02A1DFA3E00A95154 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AEF2A1DFA3E00A95154 /* HomeCollectionViewCell.swift */; };
+		47665AF32A1E24B700A95154 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 47665AF22A1E24B700A95154 /* Realm */; };
 		4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */; };
 		4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */; };
-		4786C8572A1AF2FF006AAF43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8562A1AF2FF006AAF43 /* ViewController.swift */; };
+		4786C8572A1AF2FF006AAF43 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8562A1AF2FF006AAF43 /* HomeViewController.swift */; };
 		4786C85C2A1AF301006AAF43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4786C85B2A1AF301006AAF43 /* Assets.xcassets */; };
 		4786C85F2A1AF301006AAF43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4786C85D2A1AF301006AAF43 /* LaunchScreen.storyboard */; };
 		4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8662A1AF3E6006AAF43 /* BaseTapBarController.swift */; };
@@ -27,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47548E362A1E26CC00A5BB40 /* HeartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
+		47548E382A1E26D700A5BB40 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		47665AD82A1C98CD00A95154 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		47665AE12A1CD44700A95154 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
@@ -37,10 +43,11 @@
 		47665AE72A1CD47D00A95154 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		47665AEC2A1DE66600A95154 /* DailyQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuizView.swift; sourceTree = "<group>"; };
 		47665AEE2A1DF14D00A95154 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
+		47665AEF2A1DFA3E00A95154 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		4786C84F2A1AF2FF006AAF43 /* Seoullo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seoullo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4786C8562A1AF2FF006AAF43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4786C8562A1AF2FF006AAF43 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4786C85B2A1AF301006AAF43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4786C85E2A1AF301006AAF43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4786C8602A1AF301006AAF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +66,7 @@
 				47665AEB2A1D095E00A95154 /* SwiftSoup in Frameworks */,
 				4786C8712A1AF6C0006AAF43 /* SnapKit in Frameworks */,
 				4786C8742A1AF707006AAF43 /* Alamofire in Frameworks */,
+				47665AF32A1E24B700A95154 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +151,9 @@
 		4786C86B2A1AF614006AAF43 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4786C8562A1AF2FF006AAF43 /* ViewController.swift */,
+				4786C8562A1AF2FF006AAF43 /* HomeViewController.swift */,
+				47548E362A1E26CC00A5BB40 /* HeartViewController.swift */,
+				47548E382A1E26D700A5BB40 /* SettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -152,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				47665AEC2A1DE66600A95154 /* DailyQuizView.swift */,
+				47665AEF2A1DFA3E00A95154 /* HomeCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 				4786C8732A1AF707006AAF43 /* Alamofire */,
 				47665ADB2A1CABA400A95154 /* SwiftyJSON */,
 				47665AEA2A1D095E00A95154 /* SwiftSoup */,
+				47665AF22A1E24B700A95154 /* Realm */,
 			);
 			productName = Seoullo;
 			productReference = 4786C84F2A1AF2FF006AAF43 /* Seoullo.app */;
@@ -243,6 +255,7 @@
 				4786C8722A1AF707006AAF43 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				47665AF12A1E24B700A95154 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 4786C8502A1AF2FF006AAF43 /* Products */;
 			projectDirPath = "";
@@ -271,12 +284,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4786C8572A1AF2FF006AAF43 /* ViewController.swift in Sources */,
+				4786C8572A1AF2FF006AAF43 /* HomeViewController.swift in Sources */,
 				47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */,
 				47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */,
+				47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */,
+				47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */,
 				4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */,
 				4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */,
 				4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */,
+				47665AF02A1DFA3E00A95154 /* HomeCollectionViewCell.swift in Sources */,
 				4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */,
 				47665AED2A1DE66600A95154 /* DailyQuizView.swift in Sources */,
 				4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */,
@@ -506,6 +522,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		47665AF12A1E24B700A95154 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -534,6 +558,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		47665AF22A1E24B700A95154 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47665AF12A1E24B700A95154 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
 		};
 		4786C8702A1AF6C0006AAF43 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

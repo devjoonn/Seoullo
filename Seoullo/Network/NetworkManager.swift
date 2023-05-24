@@ -10,7 +10,6 @@ import Alamofire
 import SwiftyJSON
 
 
-
 class NetworkManager {
     static let shared = NetworkManager()
     
