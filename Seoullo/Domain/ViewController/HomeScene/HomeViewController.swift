@@ -55,10 +55,8 @@ class HomeViewController: UIViewController {
 //            print("viewController = \(seoulInfo)")
 //        }
         NetworkManager.shared.educationGet() { edu in
-//            print("viewController = \(edu)")
             self.eduModel = edu
-//            self.label.text = self.stripHTMLTags(from: self.eduModel[0].CONT)
-            print(self.stripHTMLTags(from: self.eduModel[0].CONT) ?? "")
+//            print(self.stripHTMLTags(from: self.eduModel[0].CONT) ?? "")
         }
         
     }
@@ -121,8 +119,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
         
         return cell
@@ -132,6 +128,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         let width = collectionView.frame.width / 3
         let widthAndHeight = width - 15
         return CGSize(width: widthAndHeight ,height: widthAndHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = SeoulInfoViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

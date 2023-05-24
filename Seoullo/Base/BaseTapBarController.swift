@@ -24,11 +24,11 @@ class BaseTapBarController: UITabBarController {
         let nav1 = templateNavigationController(UIImage(systemName: "house"), UIImage(systemName: "house.fill"), title: "Home", viewController: firstVC)
         
         // 두번째 탭
-        let secondVC = HomeViewController()
+        let secondVC = HeartViewController()
         let nav2 = templateNavigationController(UIImage(systemName: "heart"), UIImage(systemName: "heart.fill"), title: "Heart", viewController: secondVC)
         
         // 세번째 탭
-        let thirdVC = HomeViewController()
+        let thirdVC = SettingViewController()
         let nav3 = templateNavigationController(UIImage(systemName: "gearshape"), UIImage(systemName: "gearshape.fill"), title: "Setting", viewController: thirdVC)
         
         // 탭들 Setup

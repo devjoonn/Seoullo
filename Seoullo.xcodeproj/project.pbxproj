@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E362A1E26CC00A5BB40 /* HeartViewController.swift */; };
 		47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E382A1E26D700A5BB40 /* SettingViewController.swift */; };
+		47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */; };
+		47548E432A1E340800A5BB40 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */; };
 		47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AD82A1C98CD00A95154 /* Extensions.swift */; };
 		47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 47665ADB2A1CABA400A95154 /* SwiftyJSON */; };
 		47665AE02A1CD43A00A95154 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		47548E362A1E26CC00A5BB40 /* HeartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
 		47548E382A1E26D700A5BB40 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulInfoViewController.swift; sourceTree = "<group>"; };
+		47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		47665AD82A1C98CD00A95154 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		47665AE12A1CD44700A95154 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
@@ -73,6 +77,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47548E3D2A1E329B00A5BB40 /* HomeScene */ = {
+			isa = PBXGroup;
+			children = (
+				4786C8562A1AF2FF006AAF43 /* HomeViewController.swift */,
+				47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */,
+			);
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
+		47548E3E2A1E32BE00A5BB40 /* SettingScene */ = {
+			isa = PBXGroup;
+			children = (
+				47548E382A1E26D700A5BB40 /* SettingViewController.swift */,
+			);
+			path = SettingScene;
+			sourceTree = "<group>";
+		};
+		47548E3F2A1E32C700A5BB40 /* HeartScene */ = {
+			isa = PBXGroup;
+			children = (
+				47548E362A1E26CC00A5BB40 /* HeartViewController.swift */,
+			);
+			path = HeartScene;
+			sourceTree = "<group>";
+		};
 		47665ADD2A1CD24A00A95154 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,9 +180,9 @@
 		4786C86B2A1AF614006AAF43 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4786C8562A1AF2FF006AAF43 /* HomeViewController.swift */,
-				47548E362A1E26CC00A5BB40 /* HeartViewController.swift */,
-				47548E382A1E26D700A5BB40 /* SettingViewController.swift */,
+				47548E3D2A1E329B00A5BB40 /* HomeScene */,
+				47548E3F2A1E32C700A5BB40 /* HeartScene */,
+				47548E3E2A1E32BE00A5BB40 /* SettingScene */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -163,6 +192,7 @@
 			children = (
 				47665AEC2A1DE66600A95154 /* DailyQuizView.swift */,
 				47665AEF2A1DFA3E00A95154 /* HomeCollectionViewCell.swift */,
+				47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -290,9 +320,11 @@
 				47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */,
 				47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */,
 				4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */,
+				47548E432A1E340800A5BB40 /* InfoTableViewCell.swift in Sources */,
 				4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */,
 				4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */,
 				47665AF02A1DFA3E00A95154 /* HomeCollectionViewCell.swift in Sources */,
+				47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */,
 				4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */,
 				47665AED2A1DE66600A95154 /* DailyQuizView.swift in Sources */,
 				4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */,
