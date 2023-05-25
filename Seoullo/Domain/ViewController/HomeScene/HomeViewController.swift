@@ -42,21 +42,21 @@ class HomeViewController: BaseViewController {
 
     
     func network() {
-        NetworkManager.shared.employGet() { employment in
+        NetworkManager.shared.employGet(1,4) { employment in
             let model = RowModel.sortDatesRowModel(employment)
             self.infoModel.append(model[0])
             self.infoModel.append(model[1])
             self.infoModel.append(model[2])
             self.infoModel.append(model[3])
         }
-        NetworkManager.shared.infoCenterGet() { infoCenter in
+        NetworkManager.shared.infoCenterGet(1,4) { infoCenter in
             let model = RowModel.sortDatesRowModel(infoCenter)
             self.infoModel.append(model[0])
             self.infoModel.append(model[1])
             self.infoModel.append(model[2])
             self.infoModel.append(model[3])
         }
-        NetworkManager.shared.seoulInfoGet { seoulInfo in
+        NetworkManager.shared.seoulInfoGet(1,4) { seoulInfo in
             let model = RowModel.sortDatesRowModel(seoulInfo)
             self.infoModel.append(model[0])
             self.infoModel.append(model[1])
@@ -154,22 +154,23 @@ extension HomeViewController: HomeHeaderViewDelegate {
     
     func seoulInfoTouched() {
         let str = "서울 정보"
-        let vc = SeoulInfoViewController()
+        let vc = InfoViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func infoCenterTouched() {
         let str = "자료실"
-        let vc = SeoulInfoViewController()
+        let vc = InfoViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func employTouched() {
         let str = "채용 정보"
-        let vc = SeoulInfoViewController()
+        let vc = InfoViewController()
         vc.title = str
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     

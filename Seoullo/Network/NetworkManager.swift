@@ -14,8 +14,8 @@ class NetworkManager {
     static let shared = NetworkManager()
     
 //MARK: - 서울시 채용공고
-    func employGet(_ completion: @escaping ([RowModel]) -> Void){
-        AF.request("\(Secret.baseURL)\(Secret.employKEY)/json/GlobalJobSearch/1/4/").responseJSON { response in
+    func employGet(_ first: Int, _ last: Int,_ completion: @escaping ([RowModel]) -> Void){
+        AF.request("\(Secret.baseURL)\(Secret.employKEY)/json/GlobalJobSearch/\(first)/\(last)/").responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -53,9 +53,9 @@ class NetworkManager {
     }
     
 //MARK: - 서울시 자료실
-    func infoCenterGet(_ completion: @escaping ([RowModel]) -> Void) {
+    func infoCenterGet(_ first: Int, _ last: Int,_ completion: @escaping ([RowModel]) -> Void) {
         
-        AF.request("\(Secret.baseURL)\(Secret.informationCenterKEY)/json/TBordCont9/1/5/").responseJSON { response in
+        AF.request("\(Secret.baseURL)\(Secret.informationCenterKEY)/json/TBordCont9/\(first)/\(last)/").responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -92,8 +92,8 @@ class NetworkManager {
     }
     
 //MARK: - 서울시 정보
-    func seoulInfoGet(_ completion: @escaping ([RowModel]) -> Void){
-        AF.request("\(Secret.baseURL)\(Secret.seoulInfoKEY)/json/TBordCont5/1/5/").responseJSON { response in
+    func seoulInfoGet(_ first: Int, _ last: Int,_ completion: @escaping ([RowModel]) -> Void){
+        AF.request("\(Secret.baseURL)\(Secret.seoulInfoKEY)/json/TBordCont5/\(first)/\(last)/").responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -131,8 +131,8 @@ class NetworkManager {
     }
 
 //MARK: - 서울시 교육 정보
-    func educationGet(_ completion: @escaping ([EduModel]) -> Void){
-        AF.request("\(Secret.baseURL)\(Secret.educationProgramKEY)/json/TEducProg/1/5/").responseJSON { response in
+    func educationGet(_ first: Int, _ last: Int,_ completion: @escaping ([EduModel]) -> Void){
+        AF.request("\(Secret.baseURL)\(Secret.educationProgramKEY)/json/TEducProg/\(first)/\(last)/").responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
