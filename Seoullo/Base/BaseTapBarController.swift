@@ -25,7 +25,7 @@ class BaseTapBarController: UITabBarController {
         
         // 두번째 탭
         let secondVC = HeartViewController()
-        let nav2 = templateNavigationController(UIImage(systemName: "heart"), UIImage(systemName: "heart.fill"), title: "Heart", viewController: secondVC)
+        let nav2 = templateNavigationController(UIImage(systemName: "heart"), UIImage(systemName: "heart.fill"), title: "Like", viewController: secondVC)
         
         // 세번째 탭
         let thirdVC = SettingViewController()

@@ -18,8 +18,8 @@ protocol HomeHeaderViewDelegate: AnyObject {
 }
 
 class HomeHeaderView: UIView {
-
-//MARK: - Properties
+    
+    //MARK: - Properties
     
     private let todayLabel: UILabel = {
         $0.text = "Today's Quiz"
@@ -28,36 +28,43 @@ class HomeHeaderView: UIView {
         return $0
     }(UILabel())
     
-    private let quizBackgourndView: UIImageView = {
+    private let quizBackgourndView: UIView = {
         $0.layer.cornerRadius = 12
+        let imageView = UIImageView(image: UIImage(named: "quizBack"))
+        
+        $0.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         return $0
-    }(UIImageView(image: UIImage(named: "quizBack")))
+    }(UIView())
+    
+    private let blurEffectView: UIVisualEffectView = {
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 14
+        return $0
+    }(UIVisualEffectView(effect: UIBlurEffect(style: .light)))
     
     lazy var quizLabel: UILabel = {
-        $0.text = "'접지르다'와 '접질리다' 어떤 것이 맞는 말 일까요?"
-        $0.font = UIFont.notoSansRegular(size: 17)
+        $0.text = "Q. '접지르다'와 '접질리다' 중 맞는 표현은?"
+        $0.font = UIFont.notoSansRegular(size: 13)
         $0.numberOfLines = 0
         $0.textAlignment = .center
         return $0
     }(UILabel())
     
-    private let sideBar: UIView = {
-        $0.backgroundColor = .lightGray
-        return $0
-    }(UIView())
-    
     lazy var leftAnswer: UIButton = {
         $0.setTitle("발목을 접지르다.", for: .normal)
-        $0.setTitleColor(UIColor.orange, for: .normal)
-        $0.titleLabel?.font = UIFont.notoSansBold(size: 13)
+        $0.setTitleColor(UIColor.darkGray, for: .normal)
+        $0.titleLabel?.font = UIFont.notoSansRegular(size: 11)
         $0.addTarget(self, action: #selector(leftAnswerHandler) , for: .touchUpInside)
         return $0
     }(UIButton())
     
     lazy var rightAnswer: UIButton = {
         $0.setTitle("발목을 접질리다.", for: .normal)
-        $0.setTitleColor(UIColor.orange, for: .normal)
-        $0.titleLabel?.font = UIFont.notoSansBold(size: 13)
+        $0.setTitleColor(UIColor.darkGray, for: .normal)
+        $0.titleLabel?.font = UIFont.notoSansRegular(size: 11)
         $0.addTarget(self, action: #selector(rightAnswerHandler) , for: .touchUpInside)
         return $0
     }(UIButton())
@@ -80,13 +87,12 @@ class HomeHeaderView: UIView {
         let image = UIImageView(image: UIImage(named: "news"))
         let str = UILabel()
         str.text = "서울시 소식"
-        str.font = UIFont.notoSansBold(size: 10)
+        str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)
         $0.axis = .vertical
         $0.alignment = .center
         $0.distribution = .fillEqually
-        
         return $0
     }(UIStackView())
     
@@ -94,7 +100,7 @@ class HomeHeaderView: UIView {
         let image = UIImageView(image: UIImage(named: "infoCenter"))
         let str = UILabel()
         str.text = "자료실"
-        str.font = UIFont.notoSansBold(size: 10)
+        str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)
         $0.axis = .vertical
@@ -107,7 +113,7 @@ class HomeHeaderView: UIView {
         let image = UIImageView(image: UIImage(named: "employ"))
         let str = UILabel()
         str.text = "채용 정보"
-        str.font = UIFont.notoSansBold(size: 10)
+        str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)
         $0.axis = .vertical
@@ -120,7 +126,7 @@ class HomeHeaderView: UIView {
         let image = UIImageView(image: UIImage(named: "education"))
         let str = UILabel()
         str.text = "교육 정보"
-        str.font = UIFont.notoSansBold(size: 10)
+        str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)
         $0.axis = .vertical
@@ -169,10 +175,10 @@ class HomeHeaderView: UIView {
     func setUIandConstraints() {
         self.addSubview(todayLabel)
         self.addSubview(quizBackgourndView)
-        quizBackgourndView.addSubview(quizLabel)
-        quizBackgourndView.addSubview(sideBar)
-        quizBackgourndView.addSubview(leftAnswer)
-        quizBackgourndView.addSubview(rightAnswer)
+        quizBackgourndView.addSubview(blurEffectView)
+        blurEffectView.contentView.addSubview(quizLabel)
+        blurEffectView.contentView.addSubview(leftAnswer)
+        blurEffectView.contentView.addSubview(rightAnswer)
         self.addSubview(categoryLabel)
         self.addSubview(categoryStackView)
         self.addSubview(tableViewLabel)
@@ -186,24 +192,21 @@ class HomeHeaderView: UIView {
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(150)
         }
+        blurEffectView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview().inset(30)
+        }
         quizLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalToSuperview().inset(30)
-        }
-        sideBar.snp.makeConstraints { make in
-            make.top.equalTo(quizLabel.snp.bottom).inset(-20)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(1)
-            make.height.equalTo(50)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview().inset(23)
         }
         leftAnswer.snp.makeConstraints { make in
-            make.centerY.equalTo(sideBar.snp.centerY)
-            make.trailing.equalTo(sideBar.snp.leading).inset(-40)
+            make.bottom.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().inset(30)
         }
         rightAnswer.snp.makeConstraints { make in
-            make.centerY.equalTo(sideBar.snp.centerY)
-            make.leading.equalTo(sideBar.snp.trailing).inset(-40)
+            make.bottom.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().inset(30)
         }
         categoryLabel.snp.makeConstraints { make in
             make.top.equalTo(quizBackgourndView.snp.bottom).inset(-35)
