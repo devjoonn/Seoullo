@@ -41,7 +41,6 @@ class BaseTapBarController: UITabBarController {
         nav.tabBarItem.image = image
         nav.tabBarItem.selectedImage = selectImage
         nav.tabBarItem.title = title
-        nav.navigationBar.backgroundColor = .orange
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -60,7 +59,7 @@ class BaseTapBarController: UITabBarController {
             tabBar.tintColor = .orange
             tabBar.unselectedItemTintColor = .gray
             tabBar.backgroundColor = .white
-            tabBar.barStyle = .black
+            tabBar.barStyle = .default
             tabBar.layer.masksToBounds = false
             tabBar.isTranslucent = false
         }

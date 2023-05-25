@@ -9,38 +9,27 @@ import UIKit
 import SnapKit
 import SwiftSoup
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
     var eduModel = [EduModel]()
-    
-    
+
 //MARK: - Properties
     
-    var dailyQuizView = DailyQuizView()
+    var homeHeaderView = HomeHeaderView()
     
-    var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .systemGray6
-        cv.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-        return cv
-    }()
+    var tableView: UITableView = {
+        $0.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
+        return $0
+    }(UITableView())
     
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         network()
         setUIandConstraints()
         setupNavigationBar()
-        
-        collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        dailyQuizView.delegate = self
+    
+        homeHeaderView.delegate = self
     }
 
     
@@ -54,31 +43,23 @@ class HomeViewController: UIViewController {
 //        NetworkManager.shared.seoulInfoGet { seoulInfo in
 //            print("viewController = \(seoulInfo)")
 //        }
-        NetworkManager.shared.educationGet() { edu in
-            self.eduModel = edu
+//        NetworkManager.shared.educationGet() { edu in
+//            self.eduModel = edu
 //            print(self.stripHTMLTags(from: self.eduModel[0].CONT) ?? "")
-        }
+//        }
         
     }
     
 //MARK: - set UI
     func setUIandConstraints() {
-        view.addSubview(dailyQuizView)
-        view.addSubview(collectionView)
+        view.addSubview(homeHeaderView)
         
+        homeHeaderView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(350)
+        }
 
-        dailyQuizView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(15)
-            make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(180)
-        }
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(dailyQuizView.snp.bottom).inset(-20)
-            make.leading.trailing.equalToSuperview().inset(25)
-            make.height.equalTo(220)
-            
-        }
 
         
     }
@@ -101,8 +82,12 @@ class HomeViewController: UIViewController {
     }
 }
 
+
+
+
 //MARK: - DailyQuizView Delegate
-extension HomeViewController: DailyQuizViewDelegate {
+extension HomeViewController: HomeHeaderViewDelegate {
+    
     func leftButtonTouched() {
         print("왼쪽")
     }
@@ -110,29 +95,21 @@ extension HomeViewController: DailyQuizViewDelegate {
     func rightButtonTouched() {
         print("오른쪽")
     }
+    
+    func seoulInfoTouched() {
+        print("서울 정보")
+    }
+    
+    func infoCenterTouched() {
+        print("자료실")
+    }
+    
+    func employTouched() {
+        print("채용 정보")
+    }
+    
+    func educationTouched() {
+        print("교육 정보")
+    }
 }
 
-//MARK: - CollectionView Delegate
-extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 3
-        let widthAndHeight = width - 15
-        return CGSize(width: widthAndHeight ,height: widthAndHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = SeoulInfoViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-}

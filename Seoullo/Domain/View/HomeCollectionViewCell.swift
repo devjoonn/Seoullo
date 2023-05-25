@@ -9,15 +9,16 @@ import UIKit
 import SnapKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
-
-    static let identifier = "HomeCollectionViewCell"
     
-    var collectionBackgroundView: UIView = {
-        $0.backgroundColor = .systemGray5
-        $0.layer.cornerRadius = 15
-        return $0
-    }(UIView())
     
+    
+//    var item: HomeCollectionItem {
+//        didSet {
+//            configure()
+//        }
+//    }
+    
+//MARK: - Properties
     var infoImage: UIImageView = {
         $0.image = UIImage(systemName: "heart")
         $0.tintColor = .white
@@ -35,6 +36,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUIandConstraints()
     }
     
@@ -45,13 +47,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
 //MARK: - set UI
     func setUIandConstraints() {
-        addSubview(collectionBackgroundView)
-        collectionBackgroundView.addSubview(infoImage)
-        collectionBackgroundView.addSubview(infoLabel)
+        addSubview(infoImage)
+        addSubview(infoLabel)
         
-        collectionBackgroundView.snp.makeConstraints { make in
-            make.leading.trailing.top.bottom.equalToSuperview()
-        }
         infoImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().inset(17)
@@ -62,4 +60,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
             make.centerX.equalToSuperview()
         }
     }
+    
+//MARK: - Functions
+//    func configure() {
+//        let item = item
+//        infoImage.image = item.image
+//        infoLabel.text = item.infoString
+//    }
 }

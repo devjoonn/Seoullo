@@ -11,13 +11,13 @@
 		47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E382A1E26D700A5BB40 /* SettingViewController.swift */; };
 		47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */; };
 		47548E432A1E340800A5BB40 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */; };
+		47548E452A1E3BAB00A5BB40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E442A1E3BAB00A5BB40 /* BaseViewController.swift */; };
 		47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AD82A1C98CD00A95154 /* Extensions.swift */; };
 		47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 47665ADB2A1CABA400A95154 /* SwiftyJSON */; };
 		47665AE02A1CD43A00A95154 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */; };
 		47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AE72A1CD47D00A95154 /* UIFont.swift */; };
 		47665AEB2A1D095E00A95154 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 47665AEA2A1D095E00A95154 /* SwiftSoup */; };
-		47665AED2A1DE66600A95154 /* DailyQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AEC2A1DE66600A95154 /* DailyQuizView.swift */; };
-		47665AF02A1DFA3E00A95154 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AEF2A1DFA3E00A95154 /* HomeCollectionViewCell.swift */; };
+		47665AED2A1DE66600A95154 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AEC2A1DE66600A95154 /* HomeHeaderView.swift */; };
 		47665AF32A1E24B700A95154 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 47665AF22A1E24B700A95154 /* Realm */; };
 		4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */; };
 		4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */; };
@@ -30,6 +30,7 @@
 		4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8762A1AF852006AAF43 /* NetworkManager.swift */; };
 		4786C87D2A1AFE0A006AAF43 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */; };
 		4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87E2A1B1E4D006AAF43 /* Secret.swift */; };
+		478AA7CB2A1F26E100EF3533 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		47548E382A1E26D700A5BB40 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulInfoViewController.swift; sourceTree = "<group>"; };
 		47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		47548E442A1E3BAB00A5BB40 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		47665AD82A1C98CD00A95154 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		47665AE12A1CD44700A95154 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
@@ -45,9 +47,8 @@
 		47665AE52A1CD44700A95154 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		47665AE62A1CD44700A95154 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		47665AE72A1CD47D00A95154 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
-		47665AEC2A1DE66600A95154 /* DailyQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuizView.swift; sourceTree = "<group>"; };
+		47665AEC2A1DE66600A95154 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		47665AEE2A1DF14D00A95154 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
-		47665AEF2A1DFA3E00A95154 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		4786C84F2A1AF2FF006AAF43 /* Seoullo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seoullo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		4786C8762A1AF852006AAF43 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		4786C87E2A1B1E4D006AAF43 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,9 +192,9 @@
 		4786C86C2A1AF622006AAF43 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				47665AEC2A1DE66600A95154 /* DailyQuizView.swift */,
-				47665AEF2A1DFA3E00A95154 /* HomeCollectionViewCell.swift */,
+				47665AEC2A1DE66600A95154 /* HomeHeaderView.swift */,
 				47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */,
+				478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				4786C8662A1AF3E6006AAF43 /* BaseTapBarController.swift */,
+				47548E442A1E3BAB00A5BB40 /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -323,11 +326,12 @@
 				47548E432A1E340800A5BB40 /* InfoTableViewCell.swift in Sources */,
 				4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */,
 				4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */,
-				47665AF02A1DFA3E00A95154 /* HomeCollectionViewCell.swift in Sources */,
 				47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */,
 				4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */,
-				47665AED2A1DE66600A95154 /* DailyQuizView.swift in Sources */,
+				47665AED2A1DE66600A95154 /* HomeHeaderView.swift in Sources */,
+				47548E452A1E3BAB00A5BB40 /* BaseViewController.swift in Sources */,
 				4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */,
+				478AA7CB2A1F26E100EF3533 /* HomeTableViewCell.swift in Sources */,
 				4786C87D2A1AFE0A006AAF43 /* NetworkModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
