@@ -31,6 +31,7 @@
 		4786C87D2A1AFE0A006AAF43 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */; };
 		4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C87E2A1B1E4D006AAF43 /* Secret.swift */; };
 		478AA7CB2A1F26E100EF3533 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */; };
+		478AA7CD2A1F41EF00EF3533 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7CC2A1F41EF00EF3533 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		4786C87E2A1B1E4D006AAF43 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		478AA7CC2A1F41EF00EF3533 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				47665AD82A1C98CD00A95154 /* Extensions.swift */,
 				47665AE72A1CD47D00A95154 /* UIFont.swift */,
+				478AA7CC2A1F41EF00EF3533 /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */,
 				47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */,
 				4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */,
+				478AA7CD2A1F41EF00EF3533 /* UIColor.swift in Sources */,
 				47548E432A1E340800A5BB40 /* InfoTableViewCell.swift in Sources */,
 				4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */,
 				4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */,

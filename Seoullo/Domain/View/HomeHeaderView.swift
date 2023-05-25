@@ -28,11 +28,10 @@ class HomeHeaderView: UIView {
         return $0
     }(UILabel())
     
-    private let quizBackgourndView: UIView = {
-        $0.backgroundColor = .systemGray5
+    private let quizBackgourndView: UIImageView = {
         $0.layer.cornerRadius = 12
         return $0
-    }(UIView())
+    }(UIImageView(image: UIImage(named: "quizBack")))
     
     lazy var quizLabel: UILabel = {
         $0.text = "'접지르다'와 '접질리다' 어떤 것이 맞는 말 일까요?"
@@ -132,7 +131,7 @@ class HomeHeaderView: UIView {
     
     let tableViewLabel: UILabel = {
         let attributedString = NSMutableAttributedString(string: "Current ", attributes: [.font: UIFont.notoSansBold(size: 16), .foregroundColor: UIColor.black])
-        attributedString.append(NSMutableAttributedString(string: "Latest ", attributes: [.font: UIFont.notoSans(font: .notoSansKrBold, size: 16), .foregroundColor: UIColor.orange]))
+        attributedString.append(NSMutableAttributedString(string: "Latest ", attributes: [.font: UIFont.notoSans(font: .notoSansKrBold, size: 16), .foregroundColor: UIColor.seoulloOrange]))
         attributedString.append(NSMutableAttributedString(string: "Post", attributes: [.font: UIFont.notoSans(font: .notoSansKrBold, size: 16), .foregroundColor: UIColor.black]))
         $0.attributedText = attributedString
         return $0
@@ -207,7 +206,7 @@ class HomeHeaderView: UIView {
             make.leading.equalTo(sideBar.snp.trailing).inset(-40)
         }
         categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(quizBackgourndView.snp.bottom).inset(-20)
+            make.top.equalTo(quizBackgourndView.snp.bottom).inset(-35)
             make.leading.equalToSuperview().inset(20)
         }
         categoryStackView.snp.makeConstraints { make in
@@ -215,7 +214,7 @@ class HomeHeaderView: UIView {
             make.leading.trailing.equalToSuperview().inset(20)
         }
         tableViewLabel.snp.makeConstraints { make in
-            make.top.equalTo(categoryStackView.snp.bottom).inset(-15)
+            make.top.equalTo(categoryStackView.snp.bottom).inset(-35)
             make.leading.equalToSuperview().inset(20)
         }
     }

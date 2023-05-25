@@ -25,6 +25,11 @@ struct RowModel: Codable {
     let LANG_GB: String
     let REG_DT: String
     let UPD_DT: String
+    
+    static func sortDatesRowModel(_ items: [RowModel]) -> [RowModel] {
+        let sortedItems = items.sorted { $0.UPD_DT > $1.UPD_DT }
+        return sortedItems
+    }
 }
 
 struct EduModel: Codable {
@@ -50,4 +55,9 @@ struct EduModel: Codable {
     let PERS: String //    정원
     let REG_DT: String //    등록일자
     let UPD_DT: String //    수정일자
+    
+    static func sortDatesEduModel(_ items: [EduModel]) -> [EduModel] {
+        let sortedItems = items.sorted { $0.UPD_DT > $1.UPD_DT }
+        return sortedItems
+    }
 }

@@ -10,15 +10,21 @@ import SnapKit
 import SwiftSoup
 
 class HomeViewController: BaseViewController {
-
-    var eduModel = [EduModel]()
+    
+    var infoModel: [RowModel] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
 //MARK: - Properties
     
-    var homeHeaderView = HomeHeaderView()
+    lazy var homeHeaderView = HomeHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 420))
     
-    var tableView: UITableView = {
-        $0.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
+    lazy var tableView: UITableView = {
+        $0.tableHeaderView = homeHeaderView
+        $0.separatorStyle = .none
+        $0.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         return $0
     }(UITableView())
     
@@ -30,37 +36,46 @@ class HomeViewController: BaseViewController {
         setupNavigationBar()
     
         homeHeaderView.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     
     func network() {
-//        NetworkManager.shared.employGet() { employment in
-//                    print("ViewController = \(employment)")
-//        }
-//        NetworkManager.shared.infoCenterGet() { infoCenter in
-//            print("viewController = \(infoCenter)")
-//        }
-//        NetworkManager.shared.seoulInfoGet { seoulInfo in
-//            print("viewController = \(seoulInfo)")
-//        }
+        NetworkManager.shared.employGet() { employment in
+            let model = RowModel.sortDatesRowModel(employment)
+            self.infoModel.append(model[0])
+            self.infoModel.append(model[1])
+            self.infoModel.append(model[2])
+            self.infoModel.append(model[3])
+        }
+        NetworkManager.shared.infoCenterGet() { infoCenter in
+            let model = RowModel.sortDatesRowModel(infoCenter)
+            self.infoModel.append(model[0])
+            self.infoModel.append(model[1])
+            self.infoModel.append(model[2])
+            self.infoModel.append(model[3])
+        }
+        NetworkManager.shared.seoulInfoGet { seoulInfo in
+            let model = RowModel.sortDatesRowModel(seoulInfo)
+            self.infoModel.append(model[0])
+            self.infoModel.append(model[1])
+            self.infoModel.append(model[2])
+            self.infoModel.append(model[3])
+        }
 //        NetworkManager.shared.educationGet() { edu in
-//            self.eduModel = edu
-//            print(self.stripHTMLTags(from: self.eduModel[0].CONT) ?? "")
+//            let model = EduModel.sortDatesEduModel(edu)
 //        }
-        
     }
     
 //MARK: - set UI
     func setUIandConstraints() {
-        view.addSubview(homeHeaderView)
+        view.addSubview(tableView)
         
-        homeHeaderView.snp.makeConstraints { make in
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(350)
+            make.leading.trailing.bottom.equalToSuperview()
         }
-
-
         
     }
     
@@ -74,6 +89,10 @@ class HomeViewController: BaseViewController {
     
 //MARK: - set up Navigation Bar
     private func setupNavigationBar() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        
         let logoImageView = UIImageView(image: UIImage(named: "pointer_logo_main"))
         logoImageView.contentMode = .scaleAspectFit
         let imageItem = UIBarButtonItem.init(customView: logoImageView)
@@ -83,7 +102,44 @@ class HomeViewController: BaseViewController {
 }
 
 
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        infoModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as? HomeTableViewCell else { return UITableViewCell() }
+        let model = RowModel.sortDatesRowModel(infoModel)[indexPath.row]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddHHmmss"
 
+        if let date = dateFormatter.date(from: model.UPD_DT) {
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+            let formattedDate = dateFormatter.string(from: date)
+            // 셀에 대한 정보
+            cell.titleLabel.text = model.TITL_NM
+            cell.contentLabel.text = stripHTMLTags(from: model.CONT)
+            cell.endDateLabel.text = formattedDate
+        } else {
+            print("Invalid date string")
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        110
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as? HomeTableViewCell else { return }
+        cell.selectionStyle = .none
+        
+    }
+    
+    
+}
 
 //MARK: - DailyQuizView Delegate
 extension HomeViewController: HomeHeaderViewDelegate {
@@ -97,15 +153,24 @@ extension HomeViewController: HomeHeaderViewDelegate {
     }
     
     func seoulInfoTouched() {
-        print("서울 정보")
+        let str = "서울 정보"
+        let vc = SeoulInfoViewController()
+        vc.title = str
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func infoCenterTouched() {
-        print("자료실")
+        let str = "자료실"
+        let vc = SeoulInfoViewController()
+        vc.title = str
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func employTouched() {
-        print("채용 정보")
+        let str = "채용 정보"
+        let vc = SeoulInfoViewController()
+        vc.title = str
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func educationTouched() {

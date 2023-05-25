@@ -56,7 +56,7 @@ class BaseTapBarController: UITabBarController {
     
     func tabBarSetting() {
         if #available(iOS 15.0, *){
-            tabBar.tintColor = .orange
+            tabBar.tintColor = UIColor.seoulloOrange
             tabBar.unselectedItemTintColor = .gray
             tabBar.backgroundColor = .white
             tabBar.barStyle = .default

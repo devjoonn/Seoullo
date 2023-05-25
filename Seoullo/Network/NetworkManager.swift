@@ -15,7 +15,7 @@ class NetworkManager {
     
 //MARK: - 서울시 채용공고
     func employGet(_ completion: @escaping ([RowModel]) -> Void){
-        AF.request("\(Secret.baseURL)\(Secret.employKEY)/json/GlobalJobSearch/1/5/").responseJSON { response in
+        AF.request("\(Secret.baseURL)\(Secret.employKEY)/json/GlobalJobSearch/1/4/").responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -26,7 +26,6 @@ class NetworkManager {
                     let dictionaries = rows.map { $0.dictionaryObject } // Convert each JSON object to a dictionary
                     let jsonData = try JSONSerialization.data(withJSONObject: dictionaries, options: [])
                     let rowModels = try JSONDecoder().decode([RowModel].self, from: jsonData)
-                    print(rowModels)
                     completion(rowModels)
                     
                 } catch let DecodingError.dataCorrupted(context) {
@@ -98,7 +97,6 @@ class NetworkManager {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json)
                 let TBordCont5 = json["TBordCont5"]
                 let rows = TBordCont5["row"].arrayValue
                 
@@ -106,7 +104,6 @@ class NetworkManager {
                     let dictionaries = rows.map { $0.dictionaryObject } // Convert each JSON object to a dictionary
                     let jsonData = try JSONSerialization.data(withJSONObject: dictionaries, options: [])
                     let rowModels = try JSONDecoder().decode([RowModel].self, from: jsonData)
-                    print(rowModels)
                     completion(rowModels)
                     
                 } catch let DecodingError.dataCorrupted(context) {
@@ -146,7 +143,6 @@ class NetworkManager {
                     let dictionaries = rows.map { $0.dictionaryObject } // Convert each JSON object to a dictionary
                     let jsonData = try JSONSerialization.data(withJSONObject: dictionaries, options: [])
                     let rowModels = try JSONDecoder().decode([EduModel].self, from: jsonData)
-//                    print(rowModels)
                     completion(rowModels)
                     
                 } catch let DecodingError.dataCorrupted(context) {
