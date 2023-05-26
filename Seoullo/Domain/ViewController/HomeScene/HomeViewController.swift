@@ -63,9 +63,6 @@ class HomeViewController: BaseViewController {
             self.infoModel.append(model[2])
             self.infoModel.append(model[3])
         }
-//        NetworkManager.shared.educationGet() { edu in
-//            let model = EduModel.sortDatesEduModel(edu)
-//        }
     }
     
 //MARK: - set UI
@@ -99,6 +96,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as? HomeTableViewCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         let model = RowModel.sortDatesRowModel(infoModel)[indexPath.row]
         
         let dateFormatter = DateFormatter()
@@ -122,8 +120,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as? HomeTableViewCell else { return }
-        cell.selectionStyle = .none
+        let vc = DetailPostViewController()
+        vc.title = "Lastest Post"
+        let model = infoModel[indexPath.row]
+        vc.rowModel = [model]
+        navigationController?.pushViewController(vc, animated: true)
+        
         
     }
     

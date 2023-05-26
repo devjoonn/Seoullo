@@ -12,32 +12,59 @@ class DetailPostViewController: BaseViewController {
 
     var rowModel = [RowModel]() {
         didSet {
-            self.titleLabel.text = rowModel.first?.TITL_NM
-            self.writerOrQualification.text = rowModel.first?.WRIT_NM
-            self.updateDate.text = rowModel.first?.UPD_DT
-            self.contentLabel.text = rowModel.first?.CONT
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMddHHmmss"
+            if let date = dateFormatter.date(from: rowModel.first?.UPD_DT ?? "") {
+                dateFormatter.dateFormat = "yyyy.MM.dd"
+                let formattedDate = dateFormatter.string(from: date)
+                let content = ExtesionFunc.stripHTMLTags(from: rowModel.first?.CONT ?? "")
+                
+                self.titleLabel.text = rowModel.first?.TITL_NM
+                self.writerOrQualification.text = rowModel.first?.WRIT_NM
+                self.updateDate.text = formattedDate
+                self.contentLabel.text = content
+            } else {
+                print("Invalid date string")
+            }
+            
+            
         }
     }
     
     var eduModel = [EduModel]() {
         didSet {
-            self.titleLabel.text = eduModel.first?.TITL_NM
-            self.writerOrQualification.text = eduModel.first?.APP_QUAL
-            self.updateDate.text = eduModel.first?.UPD_DT
-            self.contentLabel.text = eduModel.first?.CONT
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMddHHmmss"
+            if let date = dateFormatter.date(from: eduModel.first?.UPD_DT ?? "") {
+                dateFormatter.dateFormat = "yyyy.MM.dd"
+                let formattedDate = dateFormatter.string(from: date)
+                let content = ExtesionFunc.stripHTMLTags(from: eduModel.first?.CONT ?? "")
+                
+                self.titleLabel.text = eduModel.first?.TITL_NM
+                self.writerOrQualification.text = eduModel.first?.APP_QUAL
+                self.updateDate.text = formattedDate
+                self.contentLabel.text = content
+            } else {
+                print("Invalid date string")
+            }
+            
+            
         }
     }
     
 //MARK: - Properties
-    private let detailScrollView: UIScrollView = {
+    lazy var detailScrollView: UIScrollView = {
         $0.backgroundColor = .clear
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
         $0.isScrollEnabled = true
-        $0.scrollIndicatorInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        // 이거 중요
+        $0.contentSize = contentView.bounds.size
         return $0
     }(UIScrollView())
     
-    private let contentScrollView = UIView()
+    lazy var contentView = UIView()
     
     private let firstLine: UIView = {
         $0.backgroundColor = UIColor.seoulloDarkGray
@@ -125,26 +152,25 @@ class DetailPostViewController: BaseViewController {
 //MARK: - set UI
     func setUIandConstraints() {
         view.addSubview(detailScrollView)
-        view.addSubview(contentScrollView)
-        contentScrollView.addSubview(firstLine)
-        contentScrollView.addSubview(titleLabel)
-        contentScrollView.addSubview(writerOrQualification)
-        contentScrollView.addSubview(updateDate)
-        contentScrollView.addSubview(scrapView)
-        contentScrollView.addSubview(secondLine)
-        contentScrollView.addSubview(contentLabel)
+        detailScrollView.addSubview(contentView)
+        contentView.addSubview(firstLine)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(writerOrQualification)
+        contentView.addSubview(updateDate)
+        contentView.addSubview(scrapView)
+        contentView.addSubview(secondLine)
+        contentView.addSubview(contentLabel)
         
         
         detailScrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.bottom.top.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalTo(UIScreen.main.bounds.width)
+        }
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
             make.centerX.equalToSuperview()
         }
-        contentScrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.width.equalToSuperview()
-        }
+        
         firstLine.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(5)
             make.height.equalTo(0.5)
@@ -165,7 +191,7 @@ class DetailPostViewController: BaseViewController {
             make.leading.equalToSuperview().inset(20)
         }
         scrapView.snp.makeConstraints { make in
-            make.top.equalTo(firstLine.snp.bottom).inset(-50)
+            make.bottom.equalTo(secondLine.snp.top).inset(-15)
             make.trailing.equalToSuperview().inset(23)
             make.height.equalTo(35)
             make.width.equalTo(90)
@@ -179,6 +205,8 @@ class DetailPostViewController: BaseViewController {
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(secondLine.snp.bottom).inset(-20)
             make.leading.trailing.equalToSuperview().inset(20)
+            // 이거 중요
+            make.bottom.equalTo(contentView.snp.bottom).inset(20)
         }
         
     }
