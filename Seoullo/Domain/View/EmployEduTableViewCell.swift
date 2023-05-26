@@ -1,16 +1,16 @@
 //
-//  InfoTableViewCell.swift
+//  EmployEduTableViewCell.swift
 //  Seoullo
 //
-//  Created by 박현준 on 2023/05/24.
+//  Created by 박현준 on 2023/05/26.
 //
 
 import UIKit
 import SnapKit
 
-class InfoTableViewCell: UITableViewCell {
+class EmployEduTableViewCell: UITableViewCell {
 
-    static let identifier = "InfoTableViewCell"
+    static let identifier = "EmployEduTableViewCell"
     
 //MARK: - Properties
     let line: UIView = {
@@ -24,12 +24,17 @@ class InfoTableViewCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    lazy var contentLabel: UILabel = {
-        $0.text = "내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요."
-        $0.font = UIFont.notoSansRegular(size: 11)
-        $0.numberOfLines = 2
+    lazy var writerLabel: UILabel = {
+        $0.text = "작성자명"
+        $0.font = UIFont.notoSansRegular(size: 10)
+        $0.textColor = UIColor.seoulloDarkGray
         return $0
     }(UILabel())
+    
+    let sideLine: UIView = {
+        $0.backgroundColor = UIColor.seoulloDarkGray
+        return $0
+    }(UIView())
     
     lazy var modificationDateLabel: UILabel = {
         $0.text = "2023.05.26"
@@ -66,7 +71,8 @@ class InfoTableViewCell: UITableViewCell {
     func setUIandConstraints() {
         addSubview(line)
         addSubview(titleLabel)
-        addSubview(contentLabel)
+        addSubview(writerLabel)
+        addSubview(sideLine)
         addSubview(modificationDateLabel)
         addSubview(heartImage)
         
@@ -76,18 +82,24 @@ class InfoTableViewCell: UITableViewCell {
             make.height.equalTo(0.5)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(line.snp.bottom).inset(-10)
+            make.top.equalTo(line.snp.bottom).inset(-13)
             make.leading.equalToSuperview().inset(23)
-            make.trailing.equalToSuperview().inset(75)
+            make.trailing.equalToSuperview().inset(55)
         }
-        contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).inset(-9)
+        writerLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).inset(-12)
             make.leading.equalToSuperview().inset(23)
-            make.trailing.equalTo(heartImage.snp.leading).inset(-10)
+            make.width.equalTo(100)
+        }
+        sideLine.snp.makeConstraints { make in
+            make.centerY.equalTo(writerLabel.snp.centerY)
+            make.leading.equalTo(writerLabel.snp.trailing).inset(-8)
+            make.height.equalTo(12)
+            make.width.equalTo(0.5)
         }
         modificationDateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(titleLabel.snp.centerY)
-            make.trailing.equalToSuperview().inset(18)
+            make.centerY.equalTo(sideLine.snp.centerY)
+            make.leading.equalTo(sideLine.snp.trailing).inset(-8)
         }
         heartImage.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
@@ -96,3 +108,5 @@ class InfoTableViewCell: UITableViewCell {
         }
     }
 }
+
+

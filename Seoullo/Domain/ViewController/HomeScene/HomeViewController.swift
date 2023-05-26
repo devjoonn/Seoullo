@@ -165,7 +165,10 @@ extension HomeViewController: HomeHeaderViewDelegate {
     }
     
     func educationTouched() {
-        print("교육 정보")
+        let str = "교육 정보"
+        let vc = EducationViewController()
+        vc.title = str
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

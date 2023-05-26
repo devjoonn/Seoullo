@@ -1,5 +1,5 @@
 //
-//  EmployViewController.swift
+//  EducationViewController.swift
 //  Seoullo
 //
 //  Created by 박현준 on 2023/05/26.
@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-class EmployViewController: BaseViewController {
-
+class EducationViewController: BaseViewController {
+    
     private var firstPage = 1
     private var lastPage = 30
     private var isLoading = false
@@ -17,7 +17,7 @@ class EmployViewController: BaseViewController {
     private var spinnerView: UIView?
 
     
-    var employModel: [RowModel] = [] {
+    var educationModel: [EduModel] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -46,15 +46,15 @@ class EmployViewController: BaseViewController {
 
 //MARK: - API Handler
     func network() {
-        NetworkManager.shared.employGet(firstPage,lastPage) { seoulInfo in
-            let model = RowModel.sortDatesRowModel(seoulInfo)
-            self.employModel = model
+        NetworkManager.shared.educationGet(firstPage,lastPage) { edu in
+            let model = EduModel.sortDatesEduModel(edu)
+            self.educationModel = model
         }
     }
     
-    private func refetching(_ first: Int, _ last: Int,_ completion: @escaping ([RowModel]) -> Void) {
-        NetworkManager.shared.employGet(first,last) { seoulInfo in
-            let model = RowModel.sortDatesRowModel(seoulInfo)
+    private func refetching(_ first: Int, _ last: Int,_ completion: @escaping ([EduModel]) -> Void) {
+        NetworkManager.shared.educationGet(first,last) { edu in
+            let model = EduModel.sortDatesEduModel(edu)
             completion(model)
         }
     }
@@ -72,18 +72,18 @@ class EmployViewController: BaseViewController {
 }
 
 //MARK: - TableView
-extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+extension EducationViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return employModel.count
+        return educationModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployEduTableViewCell.identifier, for: indexPath) as? EmployEduTableViewCell else { return UITableViewCell() }
-        let model = employModel[indexPath.row]
+        let model = educationModel[indexPath.row]
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
@@ -93,7 +93,7 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
             // 셀에 대한 정보
             cell.titleLabel.text = model.TITL_NM
             cell.modificationDateLabel.text = formattedDate
-            cell.writerLabel.text = model.WRIT_NM
+            cell.writerLabel.text = model.APP_QUAL
         } else {
             print("Invalid date string")
         }
@@ -129,7 +129,7 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
     // 데이터 불러오는 함수
     func dataFetch() {
         print("dataFetch() called - ")
-        if employModel.count == 0 {
+        if educationModel.count == 0 {
             return
         }
         
@@ -146,7 +146,7 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
         let last = lastPage + 50
         // footerview 끄기랑 데이터 새로고침
         refetching(first, last) { model in
-            self.employModel += model
+            self.educationModel += model
             self.tableView.reloadData()
             self.isLoading = false
             self.tableView.tableFooterView = nil
@@ -158,7 +158,7 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
 }
 
 //MARK: - InfoHeaderView Delegate
-extension EmployViewController: InfoHeaderViewDelegate {
+extension EducationViewController: InfoHeaderViewDelegate {
     func bannerTouched() {
         print("배너 Tapped ")
     }
