@@ -36,6 +36,7 @@ class EducationViewController: BaseViewController {
 //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        ExtesionFunc.setupNavigationBackBar(self)
         network()
         
         infoHeaderView.delegate = self
@@ -102,7 +103,11 @@ extension EducationViewController: UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let vc = DetailPostViewController()
+        vc.title = self.title
+        let model = educationModel[indexPath.row]
+        vc.eduModel = [model]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // 하단 로딩창

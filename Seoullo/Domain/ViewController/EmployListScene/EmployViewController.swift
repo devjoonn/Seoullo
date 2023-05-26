@@ -36,6 +36,7 @@ class EmployViewController: BaseViewController {
 //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        ExtesionFunc.setupNavigationBackBar(self)
         network()
         
         infoHeaderView.delegate = self
@@ -102,7 +103,11 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let vc = DetailPostViewController()
+        vc.title = self.title
+        let model = employModel[indexPath.row]
+        vc.rowModel = [model]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // 하단 로딩창

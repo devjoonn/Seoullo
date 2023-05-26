@@ -38,5 +38,11 @@ struct ExtesionFunc {
         let strippedString = regex.stringByReplacingMatches(in: htmlString, options: [], range: range, withTemplate: "")
         return strippedString
     }
+    
+    static func setupNavigationBackBar(_ viewController: UIViewController) {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        backBarButtonItem.tintColor = .black
+        viewController.navigationItem.backBarButtonItem = backBarButtonItem
+    }
 }
 

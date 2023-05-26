@@ -37,6 +37,7 @@
 		478AA7D72A208AE300EF3533 /* EmployViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7D62A208AE300EF3533 /* EmployViewController.swift */; };
 		478AA7D92A208BC200EF3533 /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7D82A208BC200EF3533 /* EducationViewController.swift */; };
 		478AA7DB2A208C6400EF3533 /* EmployEduTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7DA2A208C6400EF3533 /* EmployEduTableViewCell.swift */; };
+		478AA7DE2A209C9D00EF3533 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7DD2A209C9D00EF3533 /* DetailPostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		478AA7D62A208AE300EF3533 /* EmployViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployViewController.swift; sourceTree = "<group>"; };
 		478AA7D82A208BC200EF3533 /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
 		478AA7DA2A208C6400EF3533 /* EmployEduTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployEduTableViewCell.swift; sourceTree = "<group>"; };
+		478AA7DD2A209C9D00EF3533 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 		4786C86B2A1AF614006AAF43 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				478AA7DC2A209C8300EF3533 /* DetailScene */,
 				478AA7D32A20762F00EF3533 /* SeoulInfoListScene */,
 				478AA7D22A20762100EF3533 /* InfoCenterListScene */,
 				478AA7D12A20761700EF3533 /* EmployListScene */,
@@ -280,6 +283,14 @@
 				47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */,
 			);
 			path = SeoulInfoListScene;
+			sourceTree = "<group>";
+		};
+		478AA7DC2A209C8300EF3533 /* DetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				478AA7DD2A209C9D00EF3533 /* DetailPostViewController.swift */,
+			);
+			path = DetailScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +381,7 @@
 				4786C8572A1AF2FF006AAF43 /* HomeViewController.swift in Sources */,
 				47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */,
 				47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */,
+				478AA7DE2A209C9D00EF3533 /* DetailPostViewController.swift in Sources */,
 				47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */,
 				47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */,
 				4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */,

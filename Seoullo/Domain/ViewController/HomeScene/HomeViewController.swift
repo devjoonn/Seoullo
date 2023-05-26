@@ -81,9 +81,7 @@ class HomeViewController: BaseViewController {
     
 //MARK: - set up Navigation Bar
     private func setupNavigationBar() {
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
-        backBarButtonItem.tintColor = .black
-        self.navigationItem.backBarButtonItem = backBarButtonItem
+        ExtesionFunc.setupNavigationBackBar(self)
         
         let logoImageView = UIImageView(image: UIImage(named: "pointer_logo_main"))
         logoImageView.contentMode = .scaleAspectFit
