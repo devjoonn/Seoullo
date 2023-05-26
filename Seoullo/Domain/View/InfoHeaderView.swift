@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol InfoHeaderViewDelegate: AnyObject {
+    func bannerTouched()
+}
+
 class InfoHeaderView: UIView {
 
 //MARK: - Properties
@@ -21,12 +25,14 @@ class InfoHeaderView: UIView {
         return $0
     }(UIView())
     
+    weak var delegate: InfoHeaderViewDelegate?
     
 //MARK: - Life cycles
         override init(frame: CGRect) {
             super.init(frame: frame)
             backgroundColor = .white
             setUIandConstraints()
+            configureGesture()
         }
         
         required init?(coder: NSCoder) {
@@ -43,5 +49,15 @@ class InfoHeaderView: UIView {
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().inset(15)
         }
+    }
+
+//MARK: - add Gesture
+    func configureGesture() {
+        let bannerTap = UITapGestureRecognizer(target: self, action: #selector(bannerHandler))
+        bannerView.addGestureRecognizer(bannerTap)
+    }
+    
+    @objc func bannerHandler() {
+        delegate?.bannerTouched()
     }
 }

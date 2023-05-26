@@ -54,6 +54,8 @@ class InfoViewController: BaseViewController {
 //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        infoHeaderView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         setUIandConstraints()
@@ -71,10 +73,9 @@ class InfoViewController: BaseViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
- 
-    
-//MARK: - TableView
 }
+
+//MARK: - TableView
 extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
@@ -90,4 +91,11 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         return 110
     }
     
+}
+
+//MARK: - InfoHeaderView Delegate
+extension InfoViewController: InfoHeaderViewDelegate {
+    func bannerTouched() {
+        print("배너 Tapped ")
+    }
 }
