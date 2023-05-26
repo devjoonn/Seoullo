@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E362A1E26CC00A5BB40 /* HeartViewController.swift */; };
 		47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E382A1E26D700A5BB40 /* SettingViewController.swift */; };
-		47548E412A1E332900A5BB40 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E402A1E332900A5BB40 /* InfoViewController.swift */; };
+		47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */; };
 		47548E432A1E340800A5BB40 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */; };
 		47548E452A1E3BAB00A5BB40 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E442A1E3BAB00A5BB40 /* BaseViewController.swift */; };
 		47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AD82A1C98CD00A95154 /* Extensions.swift */; };
@@ -33,12 +33,14 @@
 		478AA7CB2A1F26E100EF3533 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */; };
 		478AA7CD2A1F41EF00EF3533 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7CC2A1F41EF00EF3533 /* UIColor.swift */; };
 		478AA7CF2A1F7E7A00EF3533 /* InfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7CE2A1F7E7A00EF3533 /* InfoHeaderView.swift */; };
+		478AA7D52A20882200EF3533 /* InfoCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7D42A20882200EF3533 /* InfoCenterViewController.swift */; };
+		478AA7D72A208AE300EF3533 /* EmployViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7D62A208AE300EF3533 /* EmployViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47548E362A1E26CC00A5BB40 /* HeartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
 		47548E382A1E26D700A5BB40 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		47548E402A1E332900A5BB40 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulInfoViewController.swift; sourceTree = "<group>"; };
 		47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		47548E442A1E3BAB00A5BB40 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		47665AD82A1C98CD00A95154 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -65,6 +67,8 @@
 		478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		478AA7CC2A1F41EF00EF3533 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		478AA7CE2A1F7E7A00EF3533 /* InfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoHeaderView.swift; sourceTree = "<group>"; };
+		478AA7D42A20882200EF3533 /* InfoCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCenterViewController.swift; sourceTree = "<group>"; };
+		478AA7D62A208AE300EF3533 /* EmployViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				4786C8562A1AF2FF006AAF43 /* HomeViewController.swift */,
-				47548E402A1E332900A5BB40 /* InfoViewController.swift */,
 			);
 			path = HomeScene;
 			sourceTree = "<group>";
@@ -187,6 +190,10 @@
 		4786C86B2A1AF614006AAF43 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				478AA7D32A20762F00EF3533 /* SeoulInfoListScene */,
+				478AA7D22A20762100EF3533 /* InfoCenterListScene */,
+				478AA7D12A20761700EF3533 /* EmployListScene */,
+				478AA7D02A2075F700EF3533 /* EducationListScene */,
 				47548E3D2A1E329B00A5BB40 /* HomeScene */,
 				47548E3F2A1E32C700A5BB40 /* HeartScene */,
 				47548E3E2A1E32BE00A5BB40 /* SettingScene */,
@@ -236,6 +243,37 @@
 				4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */,
 			);
 			path = OutputModel;
+			sourceTree = "<group>";
+		};
+		478AA7D02A2075F700EF3533 /* EducationListScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EducationListScene;
+			sourceTree = "<group>";
+		};
+		478AA7D12A20761700EF3533 /* EmployListScene */ = {
+			isa = PBXGroup;
+			children = (
+				478AA7D62A208AE300EF3533 /* EmployViewController.swift */,
+			);
+			path = EmployListScene;
+			sourceTree = "<group>";
+		};
+		478AA7D22A20762100EF3533 /* InfoCenterListScene */ = {
+			isa = PBXGroup;
+			children = (
+				478AA7D42A20882200EF3533 /* InfoCenterViewController.swift */,
+			);
+			path = InfoCenterListScene;
+			sourceTree = "<group>";
+		};
+		478AA7D32A20762F00EF3533 /* SeoulInfoListScene */ = {
+			isa = PBXGroup;
+			children = (
+				47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */,
+			);
+			path = SeoulInfoListScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,12 +371,14 @@
 				47548E432A1E340800A5BB40 /* InfoTableViewCell.swift in Sources */,
 				4786C8772A1AF852006AAF43 /* NetworkManager.swift in Sources */,
 				4786C8672A1AF3E6006AAF43 /* BaseTapBarController.swift in Sources */,
-				47548E412A1E332900A5BB40 /* InfoViewController.swift in Sources */,
+				47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */,
 				478AA7CF2A1F7E7A00EF3533 /* InfoHeaderView.swift in Sources */,
 				4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */,
 				47665AED2A1DE66600A95154 /* HomeHeaderView.swift in Sources */,
+				478AA7D72A208AE300EF3533 /* EmployViewController.swift in Sources */,
 				47548E452A1E3BAB00A5BB40 /* BaseViewController.swift in Sources */,
 				4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */,
+				478AA7D52A20882200EF3533 /* InfoCenterViewController.swift in Sources */,
 				478AA7CB2A1F26E100EF3533 /* HomeTableViewCell.swift in Sources */,
 				4786C87D2A1AFE0A006AAF43 /* NetworkModel.swift in Sources */,
 			);

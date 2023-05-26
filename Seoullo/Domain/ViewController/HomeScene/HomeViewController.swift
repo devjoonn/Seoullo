@@ -79,14 +79,6 @@ class HomeViewController: BaseViewController {
         
     }
     
-    
-    func stripHTMLTags(from htmlString: String) -> String? {
-        let regex = try! NSRegularExpression(pattern: "<.*?>", options: .caseInsensitive)
-        let range = NSRange(location: 0, length: htmlString.utf16.count)
-        let strippedString = regex.stringByReplacingMatches(in: htmlString, options: [], range: range, withTemplate: "")
-        return strippedString
-    }
-    
 //MARK: - set up Navigation Bar
     private func setupNavigationBar() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
@@ -113,13 +105,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
-
         if let date = dateFormatter.date(from: model.UPD_DT) {
             dateFormatter.dateFormat = "yyyy.MM.dd"
             let formattedDate = dateFormatter.string(from: date)
             // 셀에 대한 정보
             cell.titleLabel.text = model.TITL_NM
-            cell.contentLabel.text = stripHTMLTags(from: model.CONT)
+            cell.contentLabel.text = ExtesionFunc.stripHTMLTags(from: model.CONT)
             cell.endDateLabel.text = formattedDate
         } else {
             print("Invalid date string")
@@ -153,24 +144,23 @@ extension HomeViewController: HomeHeaderViewDelegate {
     }
     
     func seoulInfoTouched() {
-        let str = "서울 정보"
-        let vc = InfoViewController()
+        let str = "서울시 소식"
+        let vc = SeoulInfoViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func infoCenterTouched() {
         let str = "자료실"
-        let vc = InfoViewController()
+        let vc = InfoCenterViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func employTouched() {
         let str = "채용 정보"
-        let vc = InfoViewController()
+        let vc = EmployViewController()
         vc.title = str
-        
         navigationController?.pushViewController(vc, animated: true)
     }
     

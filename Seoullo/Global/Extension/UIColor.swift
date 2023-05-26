@@ -10,6 +10,7 @@ import UIKit
 extension UIColor {
     static let seoulloOrange = UIColor.rgb(red: 255, green: 168, blue: 92)
     static let seoulloGray = UIColor.rgb(red: 244, green: 244, blue: 244)
+    static let seoulloDarkGray = UIColor.rgb(red: 185, green: 185, blue: 185)
     
 }
 

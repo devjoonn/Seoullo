@@ -13,32 +13,43 @@ class InfoTableViewCell: UITableViewCell {
     static let identifier = "InfoTableViewCell"
     
 //MARK: - Properties
+    let line: UIView = {
+        $0.backgroundColor = UIColor.seoulloDarkGray
+        return $0
+    }(UIView())
+    
     lazy var titleLabel: UILabel = {
-        $0.text = "2023년 5월 24일 테스트구요 (진행중)"
-        $0.font = UIFont.notoSansBold(size: 19)
-        $0.numberOfLines = 0
+        $0.text = "2023년 5월 26일 테스트구요 (진행중)"
+        $0.font = UIFont.notoSansBold(size: 14)
         return $0
     }(UILabel())
     
-    lazy var writerLabel: UILabel = {
-        $0.text = "박현준"
-        $0.font = UIFont.notoSansRegular(size: 17)
-        $0.numberOfLines = 0
+    lazy var contentLabel: UILabel = {
+        $0.text = "내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요."
+        $0.font = UIFont.notoSansRegular(size: 11)
+        $0.numberOfLines = 2
         return $0
     }(UILabel())
     
     lazy var modificationDateLabel: UILabel = {
-        $0.text = "2023.05.23"
-        $0.font = UIFont.notoSansRegular(size: 15)
+        $0.text = "2023.05.26"
+        $0.font = UIFont.notoSansRegular(size: 10)
+        $0.textColor = UIColor.seoulloDarkGray
         $0.numberOfLines = 0
         return $0
     }(UILabel())
     
-    lazy var heartImage: UIImageView = {
-        $0.image = UIImage(systemName: "heart")
+    let heartBackView: UIView = {
+        $0.layer.cornerRadius = 23
+        return $0
+    }(UIView())
+    
+    lazy var heartImage: UIButton = {
+        $0.setImage(UIImage(systemName: "heart"), for: .normal)
+        $0.setImage(UIImage(systemName: "heart"), for: .selected)
         $0.tintColor = .gray
         return $0
-    }(UIImageView())
+    }(UIButton())
     
 //MARK: - Life Cycles
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -53,27 +64,36 @@ class InfoTableViewCell: UITableViewCell {
 
 //MARK: - set UI
     func setUIandConstraints() {
+        addSubview(line)
         addSubview(titleLabel)
-        addSubview(writerLabel)
+        addSubview(contentLabel)
         addSubview(modificationDateLabel)
         addSubview(heartImage)
         
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.leading.equalToSuperview().inset(10)
+        line.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.height.equalTo(0.5)
         }
-        writerLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).inset(-7)
-            make.leading.equalToSuperview().inset(10)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(line.snp.bottom).inset(-10)
+            make.leading.equalToSuperview().inset(23)
+            make.trailing.equalToSuperview().inset(75)
+        }
+        contentLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).inset(-9)
+            make.leading.equalToSuperview().inset(23)
+            make.trailing.equalTo(heartImage.snp.leading).inset(-10)
         }
         modificationDateLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(10)
-            make.leading.equalToSuperview().inset(10)
+            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(18)
         }
         heartImage.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(20)
-            make.height.width.equalTo(40)
+            make.top.equalTo(modificationDateLabel.snp.bottom).inset(-12)
+            make.trailing.equalToSuperview().inset(30)
+            make.height.width.equalTo(20)
         }
         
     }

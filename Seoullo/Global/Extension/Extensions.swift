@@ -30,3 +30,13 @@ extension String {
     }
 }
 
+struct ExtesionFunc {
+    
+    static func stripHTMLTags(from htmlString: String) -> String? {
+        let regex = try! NSRegularExpression(pattern: "<.*?>", options: .caseInsensitive)
+        let range = NSRange(location: 0, length: htmlString.utf16.count)
+        let strippedString = regex.stringByReplacingMatches(in: htmlString, options: [], range: range, withTemplate: "")
+        return strippedString
+    }
+}
+
