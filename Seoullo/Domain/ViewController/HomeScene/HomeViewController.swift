@@ -31,7 +31,10 @@ class HomeViewController: BaseViewController {
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        network()
+        network() { model in
+            let sortModel = RowModel.sortDatesRowModel(model)
+            self.infoModel = sortModel
+        }
         setUIandConstraints()
         setupNavigationBar()
     
@@ -41,27 +44,35 @@ class HomeViewController: BaseViewController {
     }
 
     
-    func network() {
+    func network(_ completion: @escaping ([RowModel]) -> Void) {
+        var model = [RowModel]()
+        
         NetworkManager.shared.employGet(1,4) { employment in
-            let model = RowModel.sortDatesRowModel(employment)
-            self.infoModel.append(model[0])
-            self.infoModel.append(model[1])
-            self.infoModel.append(model[2])
-            self.infoModel.append(model[3])
+            model.append(employment[0])
+            model.append(employment[1])
+            model.append(employment[2])
+            model.append(employment[3])
+            if model.count >= 12 {
+                completion(model)
+            }
         }
         NetworkManager.shared.infoCenterGet(1,4) { infoCenter in
-            let model = RowModel.sortDatesRowModel(infoCenter)
-            self.infoModel.append(model[0])
-            self.infoModel.append(model[1])
-            self.infoModel.append(model[2])
-            self.infoModel.append(model[3])
+            model.append(infoCenter[0])
+            model.append(infoCenter[1])
+            model.append(infoCenter[2])
+            model.append(infoCenter[3])
+            if model.count >= 12 {
+                completion(model)
+            }
         }
         NetworkManager.shared.seoulInfoGet(1,4) { seoulInfo in
-            let model = RowModel.sortDatesRowModel(seoulInfo)
-            self.infoModel.append(model[0])
-            self.infoModel.append(model[1])
-            self.infoModel.append(model[2])
-            self.infoModel.append(model[3])
+            model.append(seoulInfo[0])
+            model.append(seoulInfo[1])
+            model.append(seoulInfo[2])
+            model.append(seoulInfo[3])
+            if model.count >= 12 {
+                completion(model)
+            }
         }
     }
     
@@ -106,8 +117,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let formattedDate = dateFormatter.string(from: date)
             // 셀에 대한 정보
             cell.titleLabel.text = model.TITL_NM
-            cell.contentLabel.text = ExtesionFunc.stripHTMLTags(from: model.CONT)
-            cell.endDateLabel.text = formattedDate
+            cell.contentLabel.text = model.CONT  //ExtesionFunc.stripHTMLTags(from: model.CONT)
+            cell.endDateLabel.text = model.UPD_DT // formattedDate
         } else {
             print("Invalid date string")
         }
