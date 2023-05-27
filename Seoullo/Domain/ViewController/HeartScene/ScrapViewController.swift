@@ -19,6 +19,8 @@ class ScrapViewController: BaseViewController {
     }
     
 //MARK: - Properties
+    private let refreshControl = UIRefreshControl()
+    
     lazy var tableView: UITableView = {
         $0.separatorStyle = .none
         $0.register(ScrapTableViewCell.self, forCellReuseIdentifier: ScrapTableViewCell.identifier)
@@ -33,9 +35,9 @@ class ScrapViewController: BaseViewController {
         setUIandConstraints()
         modelSortedDate()
 //        print(Realm.Configuration.defaultConfiguration.fileURL!)
-        print("\(String(describing: scrapModel))")
-        print("\(String(describing: scrapModel.count))")
         
+        refreshControl.addTarget(self, action: #selector(beginRefresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -53,6 +55,15 @@ class ScrapViewController: BaseViewController {
     func modelSortedDate() {
         let scrapData = realm.objects(ScrapModel.self)
         scrapModel = scrapData.compactMap{ $0 }
+    }
+    
+    
+//MARK: - Handler
+    @objc func beginRefresh(_ sender: UIRefreshControl) {
+        print("beginRefresh!")
+        sender.endRefreshing()
+        scrapModel.removeAll()
+        modelSortedDate()
     }
     
 }
