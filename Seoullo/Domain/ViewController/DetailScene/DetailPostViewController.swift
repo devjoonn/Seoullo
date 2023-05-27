@@ -12,23 +12,41 @@ class DetailPostViewController: BaseViewController {
 
     var rowModel = [RowModel]() {
         didSet {
-            let content = ExtesionFunc.stripHTMLTags(from: rowModel.first?.CONT ?? "")
-            
-            self.titleLabel.text = rowModel.first?.TITL_NM
-            self.writerOrQualification.text = rowModel.first?.WRIT_NM
-            self.updateDate.text = rowModel.first?.UPD_DT
-            self.contentLabel.text = content
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMddHHmmss"
+            if let date = dateFormatter.date(from: rowModel.first?.UPD_DT ?? "") {
+                dateFormatter.dateFormat = "yyyy.MM.dd"
+                let formattedDate = dateFormatter.string(from: date)
+                let content = ExtesionFunc.stripHTMLTags(from: rowModel.first?.CONT ?? "")
+                
+                self.titleLabel.text = rowModel.first?.TITL_NM
+                self.writerOrQualification.text = rowModel.first?.WRIT_NM
+                self.updateDate.text = formattedDate
+                self.contentLabel.text = content
+            } else {
+                print("Invalid date string")
+            }
         }
     }
     
     var eduModel = [EduModel]() {
         didSet {
-            let content = ExtesionFunc.stripHTMLTags(from: eduModel.first?.CONT ?? "")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMddHHmmss"
+            if let date = dateFormatter.date(from: eduModel.first?.UPD_DT ?? "") {
+                dateFormatter.dateFormat = "yyyy.MM.dd"
+                let formattedDate = dateFormatter.string(from: date)
+                let content = ExtesionFunc.stripHTMLTags(from: eduModel.first?.CONT ?? "")
+                
+                self.titleLabel.text = eduModel.first?.TITL_NM
+                self.writerOrQualification.text = eduModel.first?.APP_QUAL
+                self.updateDate.text = formattedDate
+                self.contentLabel.text = content
+            } else {
+                print("Invalid date string")
+            }
             
-            self.titleLabel.text = eduModel.first?.TITL_NM
-            self.writerOrQualification.text = eduModel.first?.APP_QUAL
-            self.updateDate.text = eduModel.first?.UPD_DT
-            self.contentLabel.text = content
+            
         }
     }
     
@@ -164,6 +182,7 @@ class DetailPostViewController: BaseViewController {
         }
         writerOrQualification.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).inset(-15)
+            make.trailing.equalTo(scrapView.snp.leading).inset(-20)
             make.leading.equalToSuperview().inset(20)
         }
         updateDate.snp.makeConstraints { make in
