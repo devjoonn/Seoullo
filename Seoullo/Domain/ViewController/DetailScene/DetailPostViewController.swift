@@ -7,9 +7,12 @@
 
 import UIKit
 import SnapKit
+import WebKit
 
 class DetailPostViewController: BaseViewController {
 
+    let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
+    
     var rowModel = [RowModel]() {
         didSet {
             let dateFormatter = DateFormatter()
@@ -17,12 +20,12 @@ class DetailPostViewController: BaseViewController {
             if let date = dateFormatter.date(from: rowModel.first?.UPD_DT ?? "") {
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 let formattedDate = dateFormatter.string(from: date)
-                let content = ExtesionFunc.stripHTMLTags(from: rowModel.first?.CONT ?? "")
                 
                 self.titleLabel.text = rowModel.first?.TITL_NM
                 self.writerOrQualification.text = rowModel.first?.WRIT_NM
                 self.updateDate.text = formattedDate
-                self.contentLabel.text = content
+                self.webView.loadHTMLString(rowModel.first?.CONT ?? ""+headerString, baseURL: nil)
+//                self.contentLabel.text = content
             } else {
                 print("Invalid date string")
             }
@@ -36,12 +39,12 @@ class DetailPostViewController: BaseViewController {
             if let date = dateFormatter.date(from: eduModel.first?.UPD_DT ?? "") {
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 let formattedDate = dateFormatter.string(from: date)
-                let content = ExtesionFunc.stripHTMLTags(from: eduModel.first?.CONT ?? "")
                 
                 self.titleLabel.text = eduModel.first?.TITL_NM
                 self.writerOrQualification.text = eduModel.first?.APP_QUAL
                 self.updateDate.text = formattedDate
-                self.contentLabel.text = content
+                self.webView.loadHTMLString(rowModel.first?.CONT ?? ""+headerString, baseURL: nil)
+//                self.contentLabel.text = content
             } else {
                 print("Invalid date string")
             }
@@ -128,18 +131,29 @@ class DetailPostViewController: BaseViewController {
         $0.backgroundColor = UIColor.seoulloDarkGray
         return $0
     }(UIView())
-    
-    lazy var contentLabel: UILabel = {
-        $0.text = "내용을 입력하세요."
-        $0.font = UIFont.notoSansRegular(size: 13)
-        $0.numberOfLines = 0
+
+    lazy var webView: WKWebView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.scrollView.showsVerticalScrollIndicator = false
+        $0.scrollView.showsHorizontalScrollIndicator = false
+        $0.scrollView.isScrollEnabled = false
+        $0.backgroundColor = .white
         return $0
-    }(UILabel())
+    }(WKWebView())
+    
+//    lazy var contentLabel: UILabel = {
+//        $0.text = "내용을 입력하세요."
+//        $0.font = UIFont.notoSansRegular(size: 13)
+//        $0.numberOfLines = 0
+//        return $0
+//    }(UILabel())
     
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setUIandConstraints()
+        
+       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -157,7 +171,8 @@ class DetailPostViewController: BaseViewController {
         contentView.addSubview(updateDate)
         contentView.addSubview(scrapView)
         contentView.addSubview(secondLine)
-        contentView.addSubview(contentLabel)
+//        contentView.addSubview(contentLabel)
+        contentView.addSubview(webView)
         
         
         detailScrollView.snp.makeConstraints { make in
@@ -201,12 +216,19 @@ class DetailPostViewController: BaseViewController {
             make.centerX.equalToSuperview()
             make.height.equalTo(0.5)
         }
-        contentLabel.snp.makeConstraints { make in
+        webView.snp.makeConstraints { make in
             make.top.equalTo(secondLine.snp.bottom).inset(-20)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(10)
+            make.height.equalTo(1600)
             // 이거 중요
             make.bottom.equalTo(contentView.snp.bottom).inset(20)
         }
+//        contentLabel.snp.makeConstraints { make in
+//            make.top.equalTo(secondLine.snp.bottom).inset(-20)
+//            make.leading.trailing.equalToSuperview().inset(20)
+//            // 이거 중요
+//            make.bottom.equalTo(contentView.snp.bottom).inset(20)
+//        }
         
     }
     
