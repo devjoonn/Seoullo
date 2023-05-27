@@ -113,18 +113,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         // 로컬 DB 불러와 찾아서 일치하는게 있으면 좋아요 하트 들어오게
         // 중복이 되는게 있다면 네트워크 받아온다음에 중복 제거
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMddHHmmss"
-        if let date = dateFormatter.date(from: model.UPD_DT) {
-            dateFormatter.dateFormat = "yyyy.MM.dd"
-            let formattedDate = dateFormatter.string(from: date)
-            // 셀에 대한 정보
-            cell.titleLabel.text = model.TITL_NM
-            cell.contentLabel.text = model.CONT  //ExtesionFunc.stripHTMLTags(from: model.CONT)
-            cell.endDateLabel.text = model.UPD_DT // formattedDate
-        } else {
-            print("Invalid date string")
-        }
+        cell.configure(model)
         
         return cell
     }

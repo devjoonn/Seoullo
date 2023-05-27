@@ -85,19 +85,7 @@ extension SeoulInfoViewController: UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as? InfoTableViewCell else { return UITableViewCell() }
         let model = seoulInfoModel[indexPath.row]
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMddHHmmss"
-        if let date = dateFormatter.date(from: model.UPD_DT) {
-            dateFormatter.dateFormat = "yyyy.MM.dd"
-            let formattedDate = dateFormatter.string(from: date)
-            // 셀에 대한 정보
-            cell.titleLabel.text = model.TITL_NM
-            cell.modificationDateLabel.text = formattedDate
-            cell.contentLabel.text = ExtesionFunc.stripHTMLTags(from: model.CONT)
-        } else {
-            print("Invalid date string")
-        }
+        cell.configure(model)
         
         return cell
     }

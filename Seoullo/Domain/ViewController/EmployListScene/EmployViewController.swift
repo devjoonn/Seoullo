@@ -85,19 +85,7 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployEduTableViewCell.identifier, for: indexPath) as? EmployEduTableViewCell else { return UITableViewCell() }
         let model = employModel[indexPath.row]
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMddHHmmss"
-        if let date = dateFormatter.date(from: model.UPD_DT) {
-            dateFormatter.dateFormat = "yyyy.MM.dd"
-            let formattedDate = dateFormatter.string(from: date)
-            // 셀에 대한 정보
-            cell.titleLabel.text = model.TITL_NM
-            cell.modificationDateLabel.text = formattedDate
-            cell.writerLabel.text = model.WRIT_NM
-        } else {
-            print("Invalid date string")
-        }
+        cell.configure(eduModel: nil, rowModel: model)
         
         return cell
     }

@@ -95,4 +95,19 @@ class InfoTableViewCell: UITableViewCell {
             make.height.width.equalTo(20)
         }
     }
+    
+    func configure(_ model: RowModel) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddHHmmss"
+        if let date = dateFormatter.date(from: model.UPD_DT) {
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+            let formattedDate = dateFormatter.string(from: date)
+            // 셀에 대한 정보
+            self.titleLabel.text = model.TITL_NM
+            self.modificationDateLabel.text = formattedDate
+            self.contentLabel.text = model.CONT
+        } else {
+            print("Invalid date string")
+        }
+    }
 }

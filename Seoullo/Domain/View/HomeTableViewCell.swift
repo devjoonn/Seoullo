@@ -78,4 +78,19 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    func configure(_ model: RowModel) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddHHmmss"
+        if let date = dateFormatter.date(from: model.UPD_DT) {
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+            let formattedDate = dateFormatter.string(from: date)
+            // 셀에 대한 정보
+            self.titleLabel.text = model.TITL_NM
+            self.contentLabel.text = model.CONT  //ExtesionFunc.stripHTMLTags(from: model.CONT)
+            self.endDateLabel.text = formattedDate
+        } else {
+            print("Invalid date string")
+        }
+    }
+    
 }

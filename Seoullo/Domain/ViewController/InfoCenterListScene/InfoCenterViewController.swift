@@ -86,18 +86,7 @@ extension InfoCenterViewController: UITableViewDelegate, UITableViewDataSource, 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as? InfoTableViewCell else { return UITableViewCell() }
         let model = infoCenterModel[indexPath.row]
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMddHHmmss"
-        if let date = dateFormatter.date(from: model.UPD_DT) {
-            dateFormatter.dateFormat = "yyyy.MM.dd"
-            let formattedDate = dateFormatter.string(from: date)
-            // 셀에 대한 정보
-            cell.titleLabel.text = model.TITL_NM
-            cell.modificationDateLabel.text = formattedDate
-            cell.contentLabel.text = model.CONT //ExtesionFunc.stripHTMLTags(from: model.CONT)
-        } else {
-            print("Invalid date string")
-        }
+        cell.configure(model)  //ExtesionFunc.stripHTMLTags(from: model.CONT)
         
         return cell
     }
