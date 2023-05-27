@@ -55,6 +55,7 @@ class DetailPostViewController: BaseViewController {
         print("이동 webview")
         let vc = WebViewController()
         vc.url = url
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
