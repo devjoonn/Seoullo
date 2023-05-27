@@ -11,7 +11,7 @@ import WebKit
 import RealmSwift
 
 class DetailPostViewController: BaseViewController {
-
+    
     let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
     lazy var categoryName = ""
     
@@ -70,6 +70,16 @@ class DetailPostViewController: BaseViewController {
             } else {
                 print("Invalid date string")
             }
+        }
+    }
+    
+    var showScrapModel: [ScrapModel] = [] {
+        didSet {
+            guard let content = showScrapModel.first?.content else { return }
+            self.titleLabel.text = showScrapModel.first?.title
+            self.writerOrQualification.text = showScrapModel.first?.writerOrQualification
+            self.updateDate.text = showScrapModel.first?.updateDate
+            self.webView.loadHTMLString(content+headerString, baseURL: nil)
         }
     }
     
@@ -181,9 +191,10 @@ class DetailPostViewController: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if rowModel.count > 2 || eduModel.count > 2 {
+        if rowModel.count + eduModel.count + showScrapModel.count > 2 {
             rowModel.removeAll()
             eduModel.removeAll()
+            showScrapModel.removeAll()
         }
     }
 

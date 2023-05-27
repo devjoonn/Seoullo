@@ -12,8 +12,11 @@ import RealmSwift
 class ScrapViewController: BaseViewController {
     
     let realm = try! Realm()
-    var scrapModel: Results<ScrapModel>!
-    
+    var scrapModel: [ScrapModel] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
 //MARK: - Properties
     lazy var tableView: UITableView = {
@@ -25,9 +28,13 @@ class ScrapViewController: BaseViewController {
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Scrap"
+        ExtesionFunc.setupNavigationBackBar(self)
+        title = "Scrap List"
         setUIandConstraints()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        modelSortedDate()
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print("\(String(describing: scrapModel))")
+        print("\(String(describing: scrapModel.count))")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -44,28 +51,35 @@ class ScrapViewController: BaseViewController {
     
     // 날짜순으로 리스트 정렬
     func modelSortedDate() {
-        scrapModel = realm.objects(ScrapModel.self).sorted(byKeyPath: "updateDate", ascending: true)
+        let scrapData = realm.objects(ScrapModel.self)
+        scrapModel = scrapData.compactMap{ $0 }
     }
     
 }
 
 extension ScrapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let model = scrapModel else { return 1 }
-//        return model.count
-        return 5
+        return scrapModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ScrapTableViewCell.identifier) as? ScrapTableViewCell else { return UITableViewCell() }
-//        let model = scrapModel[indexPath.row]
-        
-//        cell.configure(model)
+        let model = scrapModel[indexPath.row]
+        cell.selectionStyle = .none
+        cell.configure(model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = scrapModel[indexPath.row]
+        let vc = DetailPostViewController()
+        vc.title = model.category
+        vc.showScrapModel = [model]
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
