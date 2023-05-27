@@ -92,5 +92,22 @@ extension ScrapViewController: UITableViewDelegate, UITableViewDataSource {
         vc.showScrapModel = [model]
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // 오른쪽 스와이프
+        let delete = UIContextualAction(style: .normal, title: "delete") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("삭제 클릭 됨")
+            try! self.realm.write {
+                self.realm.delete(self.scrapModel[indexPath.row])
+                self.scrapModel.remove(at: indexPath.row)
+                self.tableView.reloadData()
+            }
+            success(true)
+        }
+        delete.backgroundColor = UIColor.rgb(red: 255, green: 35, blue: 1)
+        
+        //actions배열 인덱스 0이 왼쪽에 붙어서 나옴
+        return UISwipeActionsConfiguration(actions:[ delete ])
+    }
+    
 }
