@@ -23,6 +23,7 @@ class HomeHeaderView: UIView {
     
     private let todayLabel: UILabel = {
         $0.text = "Today's Quiz"
+        $0.textColor = .black
         $0.font = UIFont.notoSansBold(size: 16)
         $0.numberOfLines = 0
         return $0
@@ -100,6 +101,7 @@ class HomeHeaderView: UIView {
         let image = UIImageView(image: UIImage(named: "infoCenter"))
         let str = UILabel()
         str.text = "자료실"
+        str.textColor = .black
         str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)

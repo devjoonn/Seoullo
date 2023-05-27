@@ -110,6 +110,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         let model = RowModel.sortDatesRowModel(infoModel)[indexPath.row]
         
+        // 로컬 DB 불러와 찾아서 일치하는게 있으면 좋아요 하트 들어오게
+        // 중복이 되는게 있다면 네트워크 받아온다음에 중복 제거
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
         if let date = dateFormatter.date(from: model.UPD_DT) {

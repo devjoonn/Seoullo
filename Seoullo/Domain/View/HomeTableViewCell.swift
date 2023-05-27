@@ -22,12 +22,14 @@ class HomeTableViewCell: UITableViewCell {
     
     var titleLabel: UILabel = {
         $0.text = "서울시 소식"
+        $0.textColor = .black
         $0.font = UIFont.notoSansBold(size: 16)
         return $0
     }(UILabel())
     
     var contentLabel: UILabel = {
         $0.text = "제목을 입력해주세요."
+        $0.textColor = .black
         $0.font = UIFont.notoSansRegular(size: 12)
         return $0
     }(UILabel())
@@ -35,6 +37,7 @@ class HomeTableViewCell: UITableViewCell {
     
     var endDateLabel: UILabel = {
         $0.text = "2023.05.25"
+        $0.textColor = .black
         $0.font = UIFont.notoSansRegular(size: 10)
         $0.numberOfLines = 0
         return $0
@@ -43,6 +46,7 @@ class HomeTableViewCell: UITableViewCell {
     //MARK: - Life Cycles
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .white
         setUIandConstraints()
     }
     
