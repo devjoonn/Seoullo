@@ -93,6 +93,7 @@ extension EducationViewController: UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailPostViewController()
         vc.title = self.title
+        vc.categoryName = "Education"
         let model = educationModel[indexPath.row]
         vc.eduModel = [model]
         navigationController?.pushViewController(vc, animated: true)

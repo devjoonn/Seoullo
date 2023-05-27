@@ -94,6 +94,7 @@ extension SeoulInfoViewController: UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailPostViewController()
         vc.title = self.title
+        vc.categoryName = "Seoul Info"
         let model = seoulInfoModel[indexPath.row]
         vc.rowModel = [model]
         navigationController?.pushViewController(vc, animated: true)

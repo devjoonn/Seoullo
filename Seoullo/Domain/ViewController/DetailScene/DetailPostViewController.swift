@@ -8,24 +8,36 @@
 import UIKit
 import SnapKit
 import WebKit
+import RealmSwift
 
 class DetailPostViewController: BaseViewController {
 
     let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
+    lazy var categoryName = ""
     
     var rowModel = [RowModel]() {
         didSet {
+            guard let title = rowModel.first?.TITL_NM else { return }
+            guard let writer = rowModel.first?.WRIT_NM else { return }
+            guard let content = rowModel.first?.CONT else { return }
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyyMMddHHmmss"
             if let date = dateFormatter.date(from: rowModel.first?.UPD_DT ?? "") {
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 let formattedDate = dateFormatter.string(from: date)
                 
-                self.titleLabel.text = rowModel.first?.TITL_NM
-                self.writerOrQualification.text = rowModel.first?.WRIT_NM
+                self.titleLabel.text = title
+                self.writerOrQualification.text = writer
                 self.updateDate.text = formattedDate
-                self.webView.loadHTMLString(rowModel.first?.CONT ?? ""+headerString, baseURL: nil)
-//                self.contentLabel.text = content
+                self.webView.loadHTMLString(content+headerString, baseURL: nil)
+                
+                // 스크랩 시 저장될 모델에 미리 값 지정
+                scrapModel.id = UUID().uuidString
+                scrapModel.category = categoryName
+                scrapModel.title = title
+                scrapModel.writerOrQualification = writer
+                scrapModel.updateDate = formattedDate
+                scrapModel.content = content
             } else {
                 print("Invalid date string")
             }
@@ -34,30 +46,35 @@ class DetailPostViewController: BaseViewController {
     
     var eduModel = [EduModel]() {
         didSet {
+            guard let title = eduModel.first?.TITL_NM else { return }
+            guard let qualification = eduModel.first?.APP_QUAL else { return }
+            guard let content = eduModel.first?.CONT else { return }
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyyMMddHHmmss"
             if let date = dateFormatter.date(from: eduModel.first?.UPD_DT ?? "") {
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 let formattedDate = dateFormatter.string(from: date)
                 
-                self.titleLabel.text = eduModel.first?.TITL_NM
-                self.writerOrQualification.text = eduModel.first?.APP_QUAL
+                self.titleLabel.text = title
+                self.writerOrQualification.text = qualification
                 self.updateDate.text = formattedDate
-                self.webView.loadHTMLString(eduModel.first?.CONT ?? ""+headerString, baseURL: nil)
-//                self.contentLabel.text = content
+                self.webView.loadHTMLString(content+headerString, baseURL: nil)
+                
+                // 스크랩 시 저장될 모델에 미리 값 지정
+                scrapModel.id = UUID().uuidString
+                scrapModel.title = title
+                scrapModel.category = categoryName
+                scrapModel.writerOrQualification = qualification
+                scrapModel.updateDate = formattedDate
+                scrapModel.content = content
             } else {
                 print("Invalid date string")
             }
         }
     }
     
-    func pushWebView(_ url: URL){
-        print("이동 webview")
-        let vc = WebViewController()
-        vc.url = url
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+    let realm = try! Realm()
+    lazy var scrapModel = ScrapModel()
     
 //MARK: - Properties
     lazy var detailScrollView: UIScrollView = {
@@ -240,11 +257,22 @@ class DetailPostViewController: BaseViewController {
 //        }
         
     }
-    
+
+//MARK: - WebView 이동 함수
+    func pushWebView(_ url: URL){
+        print("이동 webview")
+        let vc = WebViewController()
+        vc.url = url
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 //MARK: - Handler
     @objc func scrapHandler() {
-        print("asd")
+        try! realm.write {
+            realm.add(scrapModel)
+        }
+        
     }
 }
 

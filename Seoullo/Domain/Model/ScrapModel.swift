@@ -8,8 +8,9 @@
 import Foundation
 import RealmSwift
 
-class Post: Object {
+class ScrapModel: Object {
     @objc dynamic var id: String = ""
+    @objc dynamic var category: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var writerOrQualification: String = ""
     @objc dynamic var updateDate: String = ""

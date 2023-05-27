@@ -22,8 +22,8 @@ class HeartViewController: BaseViewController {
         setUIandConstraints()
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
-        
+
+
     }
     
 //MARK: - set UI

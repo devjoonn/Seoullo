@@ -125,6 +125,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailPostViewController()
         vc.title = "Lastest Post"
+        vc.categoryName = "Lastest Post"
         let model = infoModel[indexPath.row]
         vc.rowModel = [model]
         navigationController?.pushViewController(vc, animated: true)

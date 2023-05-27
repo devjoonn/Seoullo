@@ -93,6 +93,7 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailPostViewController()
         vc.title = self.title
+        vc.categoryName = "Employ"
         let model = employModel[indexPath.row]
         vc.rowModel = [model]
         navigationController?.pushViewController(vc, animated: true)

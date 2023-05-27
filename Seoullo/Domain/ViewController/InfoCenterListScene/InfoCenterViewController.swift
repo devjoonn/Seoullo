@@ -94,6 +94,7 @@ extension InfoCenterViewController: UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailPostViewController()
         vc.title = self.title
+        vc.categoryName = "Info Center"
         let model = infoCenterModel[indexPath.row]
         vc.rowModel = [model]
         navigationController?.pushViewController(vc, animated: true)
