@@ -287,6 +287,7 @@ class DetailPostViewController: BaseViewController {
         if searchPostTitle.isEmpty {
             try! realm.write {
                 realm.add(scrapModel)
+                // 버튼의 이미지 분기처리
                 print("스크랩 완료")
             }
         } else {
@@ -294,11 +295,14 @@ class DetailPostViewController: BaseViewController {
                 print("삭제전")
                 try! realm.write {
                     realm.delete(existingScrapModel)
+                    // 버튼의 이미지 분기처리
                     print("스크랩 삭제")
                 }
             }
         }
     }
+    
+    
 }
 
 extension DetailPostViewController: WKNavigationDelegate {

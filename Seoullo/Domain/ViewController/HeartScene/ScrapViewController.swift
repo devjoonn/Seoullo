@@ -31,7 +31,7 @@ class ScrapViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ExtesionFunc.setupNavigationBackBar(self)
-        title = "Scrap List"
+        title = "Like"
         setUIandConstraints()
         modelSortedDate()
 //        print(Realm.Configuration.defaultConfiguration.fileURL!)

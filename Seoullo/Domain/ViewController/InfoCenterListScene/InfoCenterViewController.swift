@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class InfoCenterViewController: BaseViewController {
 
@@ -15,6 +16,7 @@ class InfoCenterViewController: BaseViewController {
     private var isLoading = false
     
     private var spinnerView: UIView?
+    let realm = try! Realm()
 
     
     var infoCenterModel: [RowModel] = [] {
@@ -43,6 +45,10 @@ class InfoCenterViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setUIandConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
 //MARK: - API Handler
@@ -85,8 +91,13 @@ extension InfoCenterViewController: UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as? InfoTableViewCell else { return UITableViewCell() }
         let model = infoCenterModel[indexPath.row]
-        
-        cell.configure(model)  //ExtesionFunc.stripHTMLTags(from: model.CONT)
+        let searchPostTitle = realm.objects(ScrapModel.self).filter("title == %@", model.TITL_NM)
+        //realm에 데이터가 없을 경우
+        if searchPostTitle.isEmpty {
+            cell.configure(model, false)
+        } else {
+            cell.configure(model, true)
+        }
         
         return cell
     }

@@ -51,7 +51,7 @@ class EmployEduTableViewCell: UITableViewCell {
     
     lazy var heartImage: UIButton = {
         $0.setImage(UIImage(systemName: "heart"), for: .normal)
-        $0.setImage(UIImage(systemName: "heart"), for: .selected)
+        $0.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         $0.tintColor = .gray
         return $0
     }(UIButton())
@@ -108,7 +108,7 @@ class EmployEduTableViewCell: UITableViewCell {
         }
     }
     
-    func configure( eduModel: EduModel?,  rowModel: RowModel?) {
+    func configure( eduModel: EduModel?, rowModel: RowModel?, _ scrap: Bool) {
         if rowModel != nil {
             guard let model = rowModel else { return }
             
@@ -121,6 +121,7 @@ class EmployEduTableViewCell: UITableViewCell {
                 self.titleLabel.text = model.TITL_NM
                 self.modificationDateLabel.text = formattedDate
                 self.writerOrQualificationLabel.text = model.WRIT_NM
+                self.heartImage.isSelected = scrap
             } else {
                 print("Invalid date string")
             }
@@ -136,6 +137,7 @@ class EmployEduTableViewCell: UITableViewCell {
                 self.titleLabel.text = eduModel.TITL_NM
                 self.modificationDateLabel.text = formattedDate
                 self.writerOrQualificationLabel.text = eduModel.APP_QUAL
+                self.heartImage.isSelected = scrap
             } else {
                 print("Invalid date string")
             }

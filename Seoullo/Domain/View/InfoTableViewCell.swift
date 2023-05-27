@@ -46,7 +46,7 @@ class InfoTableViewCell: UITableViewCell {
     
     lazy var heartImage: UIButton = {
         $0.setImage(UIImage(systemName: "heart"), for: .normal)
-        $0.setImage(UIImage(systemName: "heart"), for: .selected)
+        $0.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         $0.tintColor = .gray
         return $0
     }(UIButton())
@@ -96,7 +96,7 @@ class InfoTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(_ model: RowModel) {
+    func configure(_ model: RowModel,_ scrap: Bool) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
         if let date = dateFormatter.date(from: model.UPD_DT) {
@@ -105,9 +105,11 @@ class InfoTableViewCell: UITableViewCell {
             // 셀에 대한 정보
             self.titleLabel.text = model.TITL_NM
             self.modificationDateLabel.text = formattedDate
+            self.heartImage.isSelected = scrap
             self.contentLabel.text = model.CONT
         } else {
             print("Invalid date string")
         }
+
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class EducationViewController: BaseViewController {
     
@@ -15,7 +16,7 @@ class EducationViewController: BaseViewController {
     private var isLoading = false
     
     private var spinnerView: UIView?
-
+    let realm = try! Realm()
     
     var educationModel: [EduModel] = [] {
         didSet {
@@ -43,6 +44,10 @@ class EducationViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setUIandConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
 //MARK: - API Handler
@@ -85,8 +90,13 @@ extension EducationViewController: UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployEduTableViewCell.identifier, for: indexPath) as? EmployEduTableViewCell else { return UITableViewCell() }
         let model = educationModel[indexPath.row]
-        
-        cell.configure(eduModel: model, rowModel: nil)
+        let searchPostTitle = realm.objects(ScrapModel.self).filter("title == %@", model.TITL_NM)
+        //realm에 데이터가 없을 경우
+        if searchPostTitle.isEmpty {
+            cell.configure(eduModel: model, rowModel: nil, false)
+        } else {
+            cell.configure(eduModel: model, rowModel: nil, true)
+        }
         return cell
     }
     
