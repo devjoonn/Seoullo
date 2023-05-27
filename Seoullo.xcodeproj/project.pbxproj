@@ -16,9 +16,7 @@
 		47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 47665ADB2A1CABA400A95154 /* SwiftyJSON */; };
 		47665AE02A1CD43A00A95154 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47665ADF2A1CD43A00A95154 /* NotoSansKR-Bold.otf */; };
 		47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AE72A1CD47D00A95154 /* UIFont.swift */; };
-		47665AEB2A1D095E00A95154 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 47665AEA2A1D095E00A95154 /* SwiftSoup */; };
 		47665AED2A1DE66600A95154 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47665AEC2A1DE66600A95154 /* HomeHeaderView.swift */; };
-		47665AF32A1E24B700A95154 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 47665AF22A1E24B700A95154 /* Realm */; };
 		4786C8532A1AF2FF006AAF43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */; };
 		4786C8552A1AF2FF006AAF43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */; };
 		4786C8572A1AF2FF006AAF43 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786C8562A1AF2FF006AAF43 /* HomeViewController.swift */; };
@@ -39,6 +37,8 @@
 		478AA7DB2A208C6400EF3533 /* EmployEduTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7DA2A208C6400EF3533 /* EmployEduTableViewCell.swift */; };
 		478AA7DE2A209C9D00EF3533 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7DD2A209C9D00EF3533 /* DetailPostViewController.swift */; };
 		478AA7E02A21DB6C00EF3533 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7DF2A21DB6C00EF3533 /* WebViewController.swift */; };
+		478AA7E22A21E8BA00EF3533 /* ScrapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7E12A21E8BA00EF3533 /* ScrapModel.swift */; };
+		478AA7E52A21E97300EF3533 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 478AA7E42A21E97300EF3533 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +77,7 @@
 		478AA7DA2A208C6400EF3533 /* EmployEduTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployEduTableViewCell.swift; sourceTree = "<group>"; };
 		478AA7DD2A209C9D00EF3533 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		478AA7DF2A21DB6C00EF3533 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		478AA7E12A21E8BA00EF3533 /* ScrapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,11 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				478AA7E52A21E97300EF3533 /* RealmSwift in Frameworks */,
 				47665ADC2A1CABA400A95154 /* SwiftyJSON in Frameworks */,
-				47665AEB2A1D095E00A95154 /* SwiftSoup in Frameworks */,
 				4786C8712A1AF6C0006AAF43 /* SnapKit in Frameworks */,
 				4786C8742A1AF707006AAF43 /* Alamofire in Frameworks */,
-				47665AF32A1E24B700A95154 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +225,8 @@
 		4786C86D2A1AF62C006AAF43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */,
+				478AA7E12A21E8BA00EF3533 /* ScrapModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,18 +243,9 @@
 		4786C8752A1AF7A4006AAF43 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				4786C8792A1AF9CB006AAF43 /* OutputModel */,
 				4786C8762A1AF852006AAF43 /* NetworkManager.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		4786C8792A1AF9CB006AAF43 /* OutputModel */ = {
-			isa = PBXGroup;
-			children = (
-				4786C87C2A1AFE0A006AAF43 /* NetworkModel.swift */,
-			);
-			path = OutputModel;
 			sourceTree = "<group>";
 		};
 		478AA7D02A2075F700EF3533 /* EducationListScene */ = {
@@ -316,8 +309,7 @@
 				4786C8702A1AF6C0006AAF43 /* SnapKit */,
 				4786C8732A1AF707006AAF43 /* Alamofire */,
 				47665ADB2A1CABA400A95154 /* SwiftyJSON */,
-				47665AEA2A1D095E00A95154 /* SwiftSoup */,
-				47665AF22A1E24B700A95154 /* Realm */,
+				478AA7E42A21E97300EF3533 /* RealmSwift */,
 			);
 			productName = Seoullo;
 			productReference = 4786C84F2A1AF2FF006AAF43 /* Seoullo.app */;
@@ -351,8 +343,7 @@
 				4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4786C8722A1AF707006AAF43 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				47665AF12A1E24B700A95154 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				478AA7E32A21E97300EF3533 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 4786C8502A1AF2FF006AAF43 /* Products */;
 			projectDirPath = "";
@@ -384,6 +375,7 @@
 				4786C8572A1AF2FF006AAF43 /* HomeViewController.swift in Sources */,
 				47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */,
 				47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */,
+				478AA7E22A21E8BA00EF3533 /* ScrapModel.swift in Sources */,
 				478AA7DE2A209C9D00EF3533 /* DetailPostViewController.swift in Sources */,
 				47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */,
 				47548E372A1E26CC00A5BB40 /* HeartViewController.swift in Sources */,
@@ -622,22 +614,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		47665AF12A1E24B700A95154 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		4786C86F2A1AF6BF006AAF43 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -654,6 +630,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		478AA7E32A21E97300EF3533 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -661,16 +645,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 47665ADA2A1CABA300A95154 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
-		};
-		47665AEA2A1D095E00A95154 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 47665AE92A1D095E00A95154 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-		47665AF22A1E24B700A95154 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 47665AF12A1E24B700A95154 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
 		};
 		4786C8702A1AF6C0006AAF43 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -681,6 +655,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4786C8722A1AF707006AAF43 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		478AA7E42A21E97300EF3533 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 478AA7E32A21E97300EF3533 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

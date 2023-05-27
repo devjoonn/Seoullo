@@ -43,6 +43,7 @@ class SeoulInfoViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setUIandConstraints()
+        
     }
 
 //MARK: - API Handler
