@@ -280,11 +280,24 @@ class DetailPostViewController: BaseViewController {
     
 //MARK: - Handler
     @objc func scrapHandler() {
-        try! realm.write {
-            realm.add(scrapModel)
-            print("스크랩 완료")
-        }
+        // Realm에서 데이터 검색
+        let searchPostTitle = realm.objects(ScrapModel.self).filter("title == %@",titleLabel.text ?? "")
         
+        //realm에 데이터가 없을 경우
+        if searchPostTitle.isEmpty {
+            try! realm.write {
+                realm.add(scrapModel)
+                print("스크랩 완료")
+            }
+        } else {
+            if let existingScrapModel = searchPostTitle.first {
+                print("삭제전")
+                try! realm.write {
+                    realm.delete(existingScrapModel)
+                    print("스크랩 삭제")
+                }
+            }
+        }
     }
 }
 
