@@ -271,6 +271,7 @@ class DetailPostViewController: BaseViewController {
     @objc func scrapHandler() {
         try! realm.write {
             realm.add(scrapModel)
+            print("스크랩 완료")
         }
         
     }
@@ -281,7 +282,7 @@ extension DetailPostViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             webView.snp.makeConstraints { make in
-                make.height.equalTo(webView.scrollView.contentSize.height / 2.5)
+                make.height.equalTo(webView.scrollView.contentSize.height)
             }
         }
     }
