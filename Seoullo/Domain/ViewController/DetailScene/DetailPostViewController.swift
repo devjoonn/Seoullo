@@ -43,21 +43,26 @@ class DetailPostViewController: BaseViewController {
                 self.titleLabel.text = eduModel.first?.TITL_NM
                 self.writerOrQualification.text = eduModel.first?.APP_QUAL
                 self.updateDate.text = formattedDate
-                self.webView.loadHTMLString(rowModel.first?.CONT ?? ""+headerString, baseURL: nil)
+                self.webView.loadHTMLString(eduModel.first?.CONT ?? ""+headerString, baseURL: nil)
 //                self.contentLabel.text = content
             } else {
                 print("Invalid date string")
             }
-            
-            
         }
+    }
+    
+    func pushWebView(_ url: URL){
+        print("이동 webview")
+        let vc = WebViewController()
+        vc.url = url
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 //MARK: - Properties
     lazy var detailScrollView: UIScrollView = {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.showsVerticalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = true
         $0.showsHorizontalScrollIndicator = false
         $0.isScrollEnabled = true
         // 이거 중요
@@ -152,13 +157,16 @@ class DetailPostViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUIandConstraints()
-        
+        ExtesionFunc.setupNavigationBackBar(self)
+        self.webView.navigationDelegate = self
        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        rowModel.removeAll()
-        eduModel.removeAll()
+        if rowModel.count > 2 || eduModel.count > 2 {
+            rowModel.removeAll()
+            eduModel.removeAll()
+        }
     }
 
 //MARK: - set UI
@@ -219,7 +227,7 @@ class DetailPostViewController: BaseViewController {
         webView.snp.makeConstraints { make in
             make.top.equalTo(secondLine.snp.bottom).inset(-20)
             make.leading.trailing.equalToSuperview().inset(10)
-            make.height.equalTo(1600)
+//            make.height.equalTo(1600)
             // 이거 중요
             make.bottom.equalTo(contentView.snp.bottom).inset(20)
         }
@@ -236,5 +244,30 @@ class DetailPostViewController: BaseViewController {
 //MARK: - Handler
     @objc func scrapHandler() {
         print("asd")
+    }
+}
+
+extension DetailPostViewController: WKNavigationDelegate {
+    // 동적으로 webView 높이 적용
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            webView.snp.makeConstraints { make in
+                make.height.equalTo(webView.scrollView.contentSize.height / 2.5)
+            }
+        }
+    }
+    
+    // WebView에서 링크 감지시 새로운 링크로
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url {
+            // 새로운 링크를 탭한 경우
+            if navigationAction.navigationType == .linkActivated {
+                pushWebView(url)
+                decisionHandler(.cancel) // 링크를 열지 않도록 취소
+                return
+            }
+        }
+        
+        decisionHandler(.allow) // 기본 동작 허용
     }
 }
