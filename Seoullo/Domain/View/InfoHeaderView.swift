@@ -15,6 +15,7 @@ protocol InfoHeaderViewDelegate: AnyObject {
 class InfoHeaderView: UIView {
 
 //MARK: - Properties
+    
     let bannerView: UIView = {
         let imageView = UIImageView(image: UIImage(named: "banner01"))
         $0.layer.cornerRadius = 12

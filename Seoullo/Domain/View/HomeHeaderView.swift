@@ -15,6 +15,10 @@ protocol HomeHeaderViewDelegate: AnyObject {
     func infoCenterTouched()
     func employTouched()
     func educationTouched()
+    func visaTouched()
+    func hiKoreaTouched()
+    func hrdkTouched()
+    func governmentTouched()
 }
 
 class HomeHeaderView: UIView {
@@ -22,9 +26,9 @@ class HomeHeaderView: UIView {
     //MARK: - Properties
     
     private let todayLabel: UILabel = {
-        $0.text = "Today's Quiz"
-        $0.textColor = .black
-        $0.font = UIFont.notoSansBold(size: 16)
+        let attributedString = NSMutableAttributedString(string: "Today's ", attributes: [.font: UIFont.notoSansBold(size: 16), .foregroundColor: UIColor.black])
+        attributedString.append(NSMutableAttributedString(string: " Quiz", attributes: [.font: UIFont.notoSans(font: .notoSansKrBold, size: 16), .foregroundColor: UIColor.seoulloOrange]))
+        $0.attributedText = attributedString
         $0.numberOfLines = 0
         return $0
     }(UILabel())
@@ -241,10 +245,18 @@ class HomeHeaderView: UIView {
         let infoCenterTap = UITapGestureRecognizer(target: self, action: #selector(infoCenterHandler))
         let employTap = UITapGestureRecognizer(target: self, action: #selector(employHandler))
         let educationTap = UITapGestureRecognizer(target: self, action: #selector(educationHandler))
+        let visaTap = UITapGestureRecognizer(target: self, action: #selector(visaTapHandler))
+        let hiKoreaTap = UITapGestureRecognizer(target: self, action: #selector(hiKoreaHandler))
+        let hrdkTap = UITapGestureRecognizer(target: self, action: #selector(hrdkHandler))
+        let governmentTap = UITapGestureRecognizer(target: self, action: #selector(governmentHandler))
         seoulInfoStackView.addGestureRecognizer(seoulInfoTap)
         infoCenterStackView.addGestureRecognizer(infoCenterTap)
         employStackView.addGestureRecognizer(employTap)
         educationStackView.addGestureRecognizer(educationTap)
+        visaStackView.addGestureRecognizer(visaTap)
+        hiKoreaStackView.addGestureRecognizer(hiKoreaTap)
+        hrdkStackView.addGestureRecognizer(hrdkTap)
+        governmentStackView.addGestureRecognizer(governmentTap)
     }
     
     
@@ -337,5 +349,18 @@ class HomeHeaderView: UIView {
     
     @objc func educationHandler() {
         delegate?.educationTouched()
+    }
+    
+    @objc func visaTapHandler() {
+        delegate?.visaTouched()
+    }
+    @objc func hiKoreaHandler() {
+        delegate?.hiKoreaTouched()
+    }
+    @objc func hrdkHandler() {
+        delegate?.hrdkTouched()
+    }
+    @objc func governmentHandler() {
+        delegate?.governmentTouched()
     }
 }

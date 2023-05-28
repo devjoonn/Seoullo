@@ -137,7 +137,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - DailyQuizView Delegate
 extension HomeViewController: HomeHeaderViewDelegate {
-    
     func leftButtonTouched() {
         UIView.animate(withDuration: 1, animations: {
             self.homeHeaderView.answerBackView.snp.makeConstraints { make in
@@ -193,6 +192,42 @@ extension HomeViewController: HomeHeaderViewDelegate {
         let str = "Education"
         let vc = EducationViewController()
         vc.title = str
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func visaTouched() {
+        let url = URL(string: "https://www.visa.go.kr/")
+        let vc = WebViewController()
+        vc.title = "Visa"
+        vc.url = url
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func hiKoreaTouched() {
+        let url = URL(string: "https://www.hikorea.go.kr/")
+        let vc = WebViewController()
+        vc.title = "Hi Korea"
+        vc.url = url
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func hrdkTouched() {
+        let url = URL(string: "https://www.hrdkorea.or.kr/3/2/2/1")
+        let vc = WebViewController()
+        vc.title = "산업인력공단"
+        vc.url = url
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func governmentTouched() {
+        let url = URL(string: "https://www.gov.kr/portal/main")
+        let vc = WebViewController()
+        vc.title = "정부 24"
+        vc.url = url
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }
