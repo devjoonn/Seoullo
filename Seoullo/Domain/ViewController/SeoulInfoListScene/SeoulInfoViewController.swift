@@ -25,7 +25,7 @@ class SeoulInfoViewController: BaseViewController {
     }
     
 //MARK: - Properties
-    let infoHeaderView = InfoHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 110))
+    let infoHeaderView = InfoHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 125))
     
     lazy var tableView: UITableView = {
         $0.tableHeaderView = infoHeaderView
@@ -157,8 +157,6 @@ extension SeoulInfoViewController: UITableViewDelegate, UITableViewDataSource, U
         isLoading = true
         tableView.tableFooterView = createSpinnerFooter()
         
-        
-        
         let first = lastPage + 1
         let last = lastPage + 50
         // footerview 끄기랑 데이터 새로고침
@@ -176,8 +174,24 @@ extension SeoulInfoViewController: UITableViewDelegate, UITableViewDataSource, U
 
 //MARK: - InfoHeaderView Delegate
 extension SeoulInfoViewController: InfoHeaderViewDelegate {
-    func bannerTouched() {
-        print("배너 Tapped ")
+    func bannerTouched(_ index: Int) {
+        let vc = WebViewController()
+        switch index {
+        case 0:
+            vc.url = URL(string: "https://www.isi.go.kr/")
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            vc.url = URL(string: "https://global.seoul.go.kr/web/news/senw/bordContDetail.do?mode=W&brd_no=5&post_no=F49F20C01A3601C6E053C0A8A023B7B0&lang=ko")
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            vc.url = URL(string: "https://global.seoul.go.kr/web/news/senw/bordContDetail.do?mode=W&brd_no=5&post_no=F804C2B1E8950174E053C0A8A0233774&lang=ko")
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            print("index")
+        }
     }
 }
  

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471FCFE02A235EDE0061CF44 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471FCFDF2A235EDE0061CF44 /* BannerCollectionViewCell.swift */; };
 		47548E372A1E26CC00A5BB40 /* ScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E362A1E26CC00A5BB40 /* ScrapViewController.swift */; };
 		47548E392A1E26D700A5BB40 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E382A1E26D700A5BB40 /* SettingViewController.swift */; };
 		47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		471FCFDF2A235EDE0061CF44 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		47548E362A1E26CC00A5BB40 /* ScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewController.swift; sourceTree = "<group>"; };
 		47548E382A1E26D700A5BB40 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		47548E402A1E332900A5BB40 /* SeoulInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulInfoViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		471FCFDE2A235EB20061CF44 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */,
+				47EEB2BD2A21FBB500C288D5 /* ScrapTableViewCell.swift */,
+				478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */,
+				478AA7DA2A208C6400EF3533 /* EmployEduTableViewCell.swift */,
+				471FCFDF2A235EDE0061CF44 /* BannerCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		47548E3D2A1E329B00A5BB40 /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,12 +229,9 @@
 		4786C86C2A1AF622006AAF43 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				471FCFDE2A235EB20061CF44 /* Cell */,
 				47665AEC2A1DE66600A95154 /* HomeHeaderView.swift */,
 				478AA7CE2A1F7E7A00EF3533 /* InfoHeaderView.swift */,
-				47548E422A1E340800A5BB40 /* InfoTableViewCell.swift */,
-				478AA7DA2A208C6400EF3533 /* EmployEduTableViewCell.swift */,
-				47EEB2BD2A21FBB500C288D5 /* ScrapTableViewCell.swift */,
-				478AA7CA2A1F26E100EF3533 /* HomeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,6 +404,7 @@
 				47548E412A1E332900A5BB40 /* SeoulInfoViewController.swift in Sources */,
 				478AA7CF2A1F7E7A00EF3533 /* InfoHeaderView.swift in Sources */,
 				4786C87F2A1B1E4D006AAF43 /* Secret.swift in Sources */,
+				471FCFE02A235EDE0061CF44 /* BannerCollectionViewCell.swift in Sources */,
 				47665AED2A1DE66600A95154 /* HomeHeaderView.swift in Sources */,
 				478AA7D72A208AE300EF3533 /* EmployViewController.swift in Sources */,
 				47548E452A1E3BAB00A5BB40 /* BaseViewController.swift in Sources */,
