@@ -103,11 +103,20 @@ extension EducationViewController: UITableViewDelegate, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployEduTableViewCell.identifier, for: indexPath) as? EmployEduTableViewCell else { return }
         let vc = DetailPostViewController()
+        let model = educationModel[indexPath.row]
+        
+        vc.eduModel = [model]
         vc.title = self.title
         vc.categoryName = "Education"
-//        vc.heartSelected = cell.heartImage.isSelected
-        let model = educationModel[indexPath.row]
-        vc.eduModel = [model]
+        // Realm에서 데이터 검색
+        let searchPostTitle = realm.objects(ScrapModel.self).filter("title == %@", model.TITL_NM)
+        
+        //realm에 데이터가 없을 경우
+        if searchPostTitle.isEmpty {
+            vc.scrapButton.isSelected = false
+        } else {
+            vc.scrapButton.isSelected = true
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     

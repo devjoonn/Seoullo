@@ -103,13 +103,21 @@ extension InfoCenterViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as? InfoTableViewCell else { return }
         let vc = DetailPostViewController()
+        let model = infoCenterModel[indexPath.row]
+        
+        vc.rowModel = [model]
         vc.title = self.title
         vc.categoryName = "Info Center"
-//        vc.heartSelected = cell.heartImage.isSelected
-        let model = infoCenterModel[indexPath.row]
-        vc.rowModel = [model]
+        // Realm에서 데이터 검색
+        let searchPostTitle = realm.objects(ScrapModel.self).filter("title == %@", model.TITL_NM)
+        
+        //realm에 데이터가 없을 경우
+        if searchPostTitle.isEmpty {
+            vc.scrapButton.isSelected = false
+        } else {
+            vc.scrapButton.isSelected = true
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     

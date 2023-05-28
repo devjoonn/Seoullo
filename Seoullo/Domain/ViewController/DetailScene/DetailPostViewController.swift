@@ -289,7 +289,6 @@ class DetailPostViewController: BaseViewController {
                 print("삭제전")
                 try! realm.write {
                     realm.delete(existingScrapModel)
-                    
                     realm.refresh()
                     // 버튼의 이미지 분기처리
                     scrapButton.isSelected = false
