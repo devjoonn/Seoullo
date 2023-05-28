@@ -90,7 +90,7 @@ class HomeViewController: BaseViewController {
     private func setupNavigationBar() {
         ExtesionFunc.setupNavigationBackBar(self)
         
-        let logoImageView = UIImageView(image: UIImage(named: "pointer_logo_main"))
+        let logoImageView = UIImageView(image: UIImage(named: "seoullo"))
         logoImageView.contentMode = .scaleAspectFit
         let imageItem = UIBarButtonItem.init(customView: logoImageView)
         logoImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
@@ -139,22 +139,31 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: HomeHeaderViewDelegate {
     
     func leftButtonTouched() {
-        UIView.animate(withDuration: 2) {
-            self.homeHeaderView.answerLabel.text = "다시 생각해보세요."
-            self.homeHeaderView.answerLabel.alpha = 1
-            UIView.animate(withDuration: 2) {
-                self.homeHeaderView.answerLabel.alpha = 0
+        UIView.animate(withDuration: 1, animations: {
+            self.homeHeaderView.answerBackView.snp.makeConstraints { make in
+                make.width.equalTo(100)
             }
+            self.homeHeaderView.answerBackView.alpha = 1
+            self.homeHeaderView.answerLabel.text = "틀렸습니다."
+        }) { _ in
+            // tableView 애니메이션
+            UIView.animate(withDuration: 2, animations: {
+                self.homeHeaderView.answerBackView.alpha = 0
+            })
+            
         }
-        
     }
     
     func rightButtonTouched() {
-        UIView.animate(withDuration: 2) {
-            self.homeHeaderView.answerLabel.text = "정답입니다."
-            self.homeHeaderView.answerLabel.alpha = 1
+        UIView.animate(withDuration: 1, animations: {
+            self.homeHeaderView.answerBackView.snp.makeConstraints { make in
+                make.width.equalTo(100)
+            }
+            self.homeHeaderView.answerBackView.alpha = 1
+            self.homeHeaderView.answerLabel.text = "정답입니다"
+        }) { _ in
             UIView.animate(withDuration: 2) {
-                self.homeHeaderView.answerLabel.alpha = 0
+                self.homeHeaderView.answerBackView.alpha = 0
             }
         }
     }

@@ -70,13 +70,20 @@ class HomeHeaderView: UIView {
         return $0
     }(UIButton())
     
+    let answerBackView: UIView = {
+        $0.backgroundColor = UIColor.seoulloOrange
+        $0.layer.cornerRadius = 13
+        $0.alpha = 0
+        return $0
+    }(UIView())
+    
     lazy var answerLabel: UILabel = {
         $0.text = "Answer : 접질리다"
         $0.font = UIFont.notoSansBold(size: 13)
-        $0.textColor = UIColor.seoulloOrange
+        $0.textColor = UIColor.white
         $0.numberOfLines = 0
         $0.textAlignment = .center
-        $0.alpha = 0
+//        $0.alpha = 0
         return $0
     }(UILabel())
     
@@ -191,7 +198,8 @@ class HomeHeaderView: UIView {
         blurEffectView.contentView.addSubview(quizLabel)
         blurEffectView.contentView.addSubview(leftAnswer)
         blurEffectView.contentView.addSubview(rightAnswer)
-        self.addSubview(answerLabel)
+        self.addSubview(answerBackView)
+        answerBackView.addSubview(answerLabel)
         self.addSubview(categoryLabel)
         self.addSubview(categoryStackView)
         self.addSubview(tableViewLabel)
@@ -221,10 +229,13 @@ class HomeHeaderView: UIView {
             make.bottom.equalToSuperview().inset(10)
             make.trailing.equalToSuperview().inset(30)
         }
-        answerLabel.snp.makeConstraints { make in
+        answerBackView.snp.makeConstraints { make in
             make.top.equalTo(quizBackgourndView.snp.bottom).inset(-10)
             make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(35)
+        }
+        answerLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         categoryLabel.snp.makeConstraints { make in
             make.top.equalTo(quizBackgourndView.snp.bottom).inset(-35)

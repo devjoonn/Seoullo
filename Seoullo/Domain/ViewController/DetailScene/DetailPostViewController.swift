@@ -280,7 +280,6 @@ class DetailPostViewController: BaseViewController {
                 pushModel.updateDate = updateDate.text ?? ""
                 pushModel.content = contentLabel.text ?? ""
                 realm.add(pushModel)
-//                realm.refresh()
                 // 버튼의 이미지 분기처리
                 scrapButton.isSelected = true
                 print("스크랩 완료")
@@ -290,7 +289,6 @@ class DetailPostViewController: BaseViewController {
                 print("삭제전")
                 try! realm.write {
                     realm.delete(existingScrapModel)
-//                    realm.refresh()
                     // 버튼의 이미지 분기처리
                     scrapButton.isSelected = false
                     print("스크랩 삭제")
