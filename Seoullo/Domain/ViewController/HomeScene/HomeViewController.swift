@@ -18,7 +18,7 @@ class HomeViewController: BaseViewController {
 
 //MARK: - Properties
     
-    lazy var homeHeaderView = HomeHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 420))
+    lazy var homeHeaderView = HomeHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 500))
     
     lazy var tableView: UITableView = {
         $0.tableHeaderView = homeHeaderView
@@ -143,7 +143,7 @@ extension HomeViewController: HomeHeaderViewDelegate {
             self.homeHeaderView.answerBackView.snp.makeConstraints { make in
                 make.width.equalTo(100)
             }
-            self.homeHeaderView.answerBackView.alpha = 1
+            self.homeHeaderView.answerBackView.alpha = 0.5
             self.homeHeaderView.answerLabel.text = "틀렸습니다."
         }) { _ in
             // tableView 애니메이션
@@ -159,7 +159,7 @@ extension HomeViewController: HomeHeaderViewDelegate {
             self.homeHeaderView.answerBackView.snp.makeConstraints { make in
                 make.width.equalTo(100)
             }
-            self.homeHeaderView.answerBackView.alpha = 1
+            self.homeHeaderView.answerBackView.alpha = 0.5
             self.homeHeaderView.answerLabel.text = "정답입니다"
         }) { _ in
             UIView.animate(withDuration: 2) {

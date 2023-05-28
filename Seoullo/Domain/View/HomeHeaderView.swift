@@ -79,11 +79,10 @@ class HomeHeaderView: UIView {
     
     lazy var answerLabel: UILabel = {
         $0.text = "Answer : 접질리다"
-        $0.font = UIFont.notoSansBold(size: 13)
+        $0.font = UIFont.notoSansBold(size: 12)
         $0.textColor = UIColor.white
         $0.numberOfLines = 0
         $0.textAlignment = .center
-//        $0.alpha = 0
         return $0
     }(UILabel())
     
@@ -100,6 +99,13 @@ class HomeHeaderView: UIView {
         $0.spacing = 10
         return $0
     }(UIStackView(arrangedSubviews: [self.seoulInfoStackView, self.infoCenterStackView, self.employStackView, self.educationStackView]))
+    
+    lazy var categorySecondStackView: UIStackView = {
+        $0.axis = .horizontal
+        $0.distribution = .fillEqually
+        $0.spacing = 10
+        return $0
+    }(UIStackView(arrangedSubviews: [self.visaStackView, self.hiKoreaStackView, self.hrdkStackView, self.governmentStackView]))
     
     let seoulInfoStackView: UIStackView = {
         let image = UIImageView(image: UIImage(named: "news"))
@@ -145,6 +151,58 @@ class HomeHeaderView: UIView {
         let image = UIImageView(image: UIImage(named: "education"))
         let str = UILabel()
         str.text = "Education"
+        str.font = UIFont.notoSansRegular(size: 10)
+        $0.addArrangedSubview(image)
+        $0.addArrangedSubview(str)
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fillEqually
+        return $0
+    }(UIStackView())
+    
+    let visaStackView: UIStackView = {
+        let image = UIImageView(image: UIImage(named: "visa"))
+        let str = UILabel()
+        str.text = "Visa Potal"
+        str.font = UIFont.notoSansRegular(size: 10)
+        $0.addArrangedSubview(image)
+        $0.addArrangedSubview(str)
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fillEqually
+        return $0
+    }(UIStackView())
+    
+    let hiKoreaStackView: UIStackView = {
+        let image = UIImageView(image: UIImage(named: "hiKorea"))
+        let str = UILabel()
+        str.text = "Hi Korea"
+        str.font = UIFont.notoSansRegular(size: 10)
+        $0.addArrangedSubview(image)
+        $0.addArrangedSubview(str)
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fillEqually
+        return $0
+    }(UIStackView())
+    
+    let hrdkStackView: UIStackView = {
+        let image = UIImageView(image: UIImage(named: "hrdk"))
+        let str = UILabel()
+        str.text = "산업인력공단"
+        str.font = UIFont.notoSansRegular(size: 10)
+        $0.addArrangedSubview(image)
+        $0.addArrangedSubview(str)
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fillEqually
+        return $0
+    }(UIStackView())
+    
+    let governmentStackView: UIStackView = {
+        let image = UIImageView(image: UIImage(named: "government"))
+        let str = UILabel()
+        str.text = "정부 24"
         str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)
@@ -202,6 +260,7 @@ class HomeHeaderView: UIView {
         answerBackView.addSubview(answerLabel)
         self.addSubview(categoryLabel)
         self.addSubview(categoryStackView)
+        self.addSubview(categorySecondStackView)
         self.addSubview(tableViewLabel)
         
         todayLabel.snp.makeConstraints { make in
@@ -232,7 +291,7 @@ class HomeHeaderView: UIView {
         answerBackView.snp.makeConstraints { make in
             make.top.equalTo(quizBackgourndView.snp.bottom).inset(-10)
             make.centerX.equalToSuperview()
-            make.height.equalTo(35)
+            make.height.equalTo(33)
         }
         answerLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -245,8 +304,12 @@ class HomeHeaderView: UIView {
             make.top.equalTo(categoryLabel.snp.bottom).inset(-20)
             make.leading.trailing.equalToSuperview().inset(20)
         }
+        categorySecondStackView.snp.makeConstraints { make in
+            make.top.equalTo(categoryStackView.snp.bottom).inset(-20)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
         tableViewLabel.snp.makeConstraints { make in
-            make.top.equalTo(categoryStackView.snp.bottom).inset(-35)
+            make.top.equalTo(categorySecondStackView.snp.bottom).inset(-35)
             make.leading.equalToSuperview().inset(20)
         }
     }
