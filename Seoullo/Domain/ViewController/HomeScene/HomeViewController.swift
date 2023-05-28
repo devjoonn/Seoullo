@@ -139,11 +139,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: HomeHeaderViewDelegate {
     
     func leftButtonTouched() {
-        print("왼쪽")
+        UIView.animate(withDuration: 2) {
+            self.homeHeaderView.answerLabel.text = "다시 생각해보세요."
+            self.homeHeaderView.answerLabel.alpha = 1
+            UIView.animate(withDuration: 2) {
+                self.homeHeaderView.answerLabel.alpha = 0
+            }
+        }
+        
     }
     
     func rightButtonTouched() {
-        print("오른쪽")
+        UIView.animate(withDuration: 2) {
+            self.homeHeaderView.answerLabel.text = "정답입니다."
+            self.homeHeaderView.answerLabel.alpha = 1
+            UIView.animate(withDuration: 2) {
+                self.homeHeaderView.answerLabel.alpha = 0
+            }
+        }
     }
     
     func seoulInfoTouched() {
