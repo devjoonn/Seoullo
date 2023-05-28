@@ -103,9 +103,11 @@ extension InfoCenterViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as? InfoTableViewCell else { return }
         let vc = DetailPostViewController()
         vc.title = self.title
         vc.categoryName = "Info Center"
+//        vc.heartSelected = cell.heartImage.isSelected
         let model = infoCenterModel[indexPath.row]
         vc.rowModel = [model]
         navigationController?.pushViewController(vc, animated: true)

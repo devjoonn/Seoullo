@@ -34,7 +34,6 @@ class ScrapViewController: BaseViewController {
         title = "Like"
         setUIandConstraints()
         modelSortedDate()
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         refreshControl.addTarget(self, action: #selector(beginRefresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
@@ -89,6 +88,7 @@ extension ScrapViewController: UITableViewDelegate, UITableViewDataSource {
         let model = scrapModel[indexPath.row]
         let vc = DetailPostViewController()
         vc.title = model.category
+        vc.scrapButton.isSelected = true
         vc.showScrapModel = [model]
         navigationController?.pushViewController(vc, animated: true)
     }

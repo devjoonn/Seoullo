@@ -50,9 +50,8 @@ class EmployEduTableViewCell: UITableViewCell {
     }(UIView())
     
     lazy var heartImage: UIButton = {
-        $0.setImage(UIImage(systemName: "heart"), for: .normal)
-        $0.setImage(UIImage(systemName: "heart.fill"), for: .selected)
-        $0.tintColor = .gray
+        $0.setImage(UIImage(named: "tableUnHeart"), for: .normal)
+        $0.setImage(UIImage(named: "tableHeart"), for: .selected)
         return $0
     }(UIButton())
     

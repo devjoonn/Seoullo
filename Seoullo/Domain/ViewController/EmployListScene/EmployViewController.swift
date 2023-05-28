@@ -102,9 +102,11 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployEduTableViewCell.identifier, for: indexPath) as? EmployEduTableViewCell else { return }
         let vc = DetailPostViewController()
         vc.title = self.title
         vc.categoryName = "Employ"
+//        vc.heartSelected = cell.heartImage.isSelected
         let model = employModel[indexPath.row]
         vc.rowModel = [model]
         navigationController?.pushViewController(vc, animated: true)

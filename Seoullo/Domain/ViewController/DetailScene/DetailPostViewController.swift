@@ -30,14 +30,7 @@ class DetailPostViewController: BaseViewController {
                 self.writerOrQualification.text = writer
                 self.updateDate.text = formattedDate
                 self.webView.loadHTMLString(content+headerString, baseURL: nil)
-                
-                // 스크랩 시 저장될 모델에 미리 값 지정
-                scrapModel.id = UUID().uuidString
-                scrapModel.category = categoryName
-                scrapModel.title = title
-                scrapModel.writerOrQualification = writer
-                scrapModel.updateDate = formattedDate
-                scrapModel.content = content
+                self.contentLabel.text = content
             } else {
                 print("Invalid date string")
             }
@@ -59,14 +52,7 @@ class DetailPostViewController: BaseViewController {
                 self.writerOrQualification.text = qualification
                 self.updateDate.text = formattedDate
                 self.webView.loadHTMLString(content+headerString, baseURL: nil)
-                
-                // 스크랩 시 저장될 모델에 미리 값 지정
-                scrapModel.id = UUID().uuidString
-                scrapModel.title = title
-                scrapModel.category = categoryName
-                scrapModel.writerOrQualification = qualification
-                scrapModel.updateDate = formattedDate
-                scrapModel.content = content
+                self.contentLabel.text = content
             } else {
                 print("Invalid date string")
             }
@@ -84,7 +70,6 @@ class DetailPostViewController: BaseViewController {
     }
     
     let realm = try! Realm()
-    lazy var scrapModel = ScrapModel()
     
 //MARK: - Properties
     lazy var detailScrollView: UIScrollView = {
@@ -132,33 +117,28 @@ class DetailPostViewController: BaseViewController {
         $0.backgroundColor = UIColor.seoulloGray
         $0.layer.cornerRadius = 12
         $0.clipsToBounds = true
-
-        let scrapButton: UIButton = {
-            let btn = UIButton()
-            
-            btn.setImage(UIImage(systemName:"heart"), for: .normal)
-            btn.addTarget(self, action: #selector(scrapHandler), for: .touchUpInside)
-            return btn
-        }()
-        let scrapLabel: UILabel = {
-            let label = UILabel()
-            label.text = "스크랩"
-            label.font = UIFont.notoSansRegular(size: 11)
-            return label
-        }()
-        let stack: UIStackView = {
-            let stk = UIStackView(arrangedSubviews: [scrapButton, scrapLabel])
-            stk.axis = .horizontal
-            stk.distribution = .fill
-            stk.spacing = 4
-            return stk
-        }()
-        $0.addSubview(stack)
-        stack.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
         return $0
     }(UIView())
+    
+    let scrapButton: UIButton = {
+        $0.setImage(UIImage(named: "unHeart"), for: .normal)
+        $0.setImage(UIImage(named: "heart"), for: .selected)
+        $0.addTarget(self, action: #selector(scrapHandler), for: .touchUpInside)
+        return $0
+    }(UIButton())
+    
+    let scrapLabel: UILabel = {
+        $0.text = "Like"
+        $0.font = UIFont.notoSansRegular(size: 11)
+        return $0
+    }(UILabel())
+    
+    lazy var stack: UIStackView = {
+        $0.axis = .horizontal
+        $0.distribution = .fill
+        $0.spacing = 4
+        return $0
+    }(UIStackView(arrangedSubviews: [scrapButton, scrapLabel]))
     
     private let secondLine: UIView = {
         $0.backgroundColor = UIColor.seoulloDarkGray
@@ -174,12 +154,14 @@ class DetailPostViewController: BaseViewController {
         return $0
     }(WKWebView())
     
-//    lazy var contentLabel: UILabel = {
-//        $0.text = "내용을 입력하세요."
-//        $0.font = UIFont.notoSansRegular(size: 13)
-//        $0.numberOfLines = 0
-//        return $0
-//    }(UILabel())
+    lazy var contentLabel: UILabel = {
+        $0.text = "내용을 입력하세요."
+        $0.font = UIFont.notoSansRegular(size: 13)
+        $0.numberOfLines = 0
+        return $0
+    }(UILabel())
+    
+    
     
 //MARK: - Life cycles
     override func viewDidLoad() {
@@ -187,7 +169,6 @@ class DetailPostViewController: BaseViewController {
         setUIandConstraints()
         ExtesionFunc.setupNavigationBackBar(self)
         self.webView.navigationDelegate = self
-       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -207,6 +188,7 @@ class DetailPostViewController: BaseViewController {
         contentView.addSubview(writerOrQualification)
         contentView.addSubview(updateDate)
         contentView.addSubview(scrapView)
+        scrapView.addSubview(stack)
         contentView.addSubview(secondLine)
 //        contentView.addSubview(contentLabel)
         contentView.addSubview(webView)
@@ -247,6 +229,9 @@ class DetailPostViewController: BaseViewController {
             make.height.equalTo(35)
             make.width.equalTo(90)
         }
+        stack.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         secondLine.snp.makeConstraints { make in
             make.top.equalTo(updateDate.snp.bottom).inset(-15)
             make.width.equalTo(UIScreen.main.bounds.width - 30)
@@ -282,12 +267,21 @@ class DetailPostViewController: BaseViewController {
     @objc func scrapHandler() {
         // Realm에서 데이터 검색
         let searchPostTitle = realm.objects(ScrapModel.self).filter("title == %@",titleLabel.text ?? "")
-        
         //realm에 데이터가 없을 경우
         if searchPostTitle.isEmpty {
             try! realm.write {
-                realm.add(scrapModel)
+                
+                let pushModel = ScrapModel()
+                pushModel.id = generateNewUniqueKey()
+                pushModel.title = titleLabel.text ?? ""
+                pushModel.category = categoryName
+                pushModel.writerOrQualification = writerOrQualification.text ?? ""
+                pushModel.updateDate = updateDate.text ?? ""
+                pushModel.content = contentLabel.text ?? ""
+                realm.add(pushModel)
+                realm.refresh()
                 // 버튼의 이미지 분기처리
+                scrapButton.isSelected = true
                 print("스크랩 완료")
             }
         } else {
@@ -295,14 +289,20 @@ class DetailPostViewController: BaseViewController {
                 print("삭제전")
                 try! realm.write {
                     realm.delete(existingScrapModel)
+                    
+                    realm.refresh()
                     // 버튼의 이미지 분기처리
+                    scrapButton.isSelected = false
                     print("스크랩 삭제")
                 }
             }
         }
     }
     
-    
+    // id의 uuid가 같아서 새로 생성
+    func generateNewUniqueKey() -> String {
+        return UUID().uuidString
+    }
 }
 
 extension DetailPostViewController: WKNavigationDelegate {

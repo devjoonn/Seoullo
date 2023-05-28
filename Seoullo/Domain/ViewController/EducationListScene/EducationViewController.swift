@@ -101,9 +101,11 @@ extension EducationViewController: UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployEduTableViewCell.identifier, for: indexPath) as? EmployEduTableViewCell else { return }
         let vc = DetailPostViewController()
         vc.title = self.title
         vc.categoryName = "Education"
+//        vc.heartSelected = cell.heartImage.isSelected
         let model = educationModel[indexPath.row]
         vc.eduModel = [model]
         navigationController?.pushViewController(vc, animated: true)
