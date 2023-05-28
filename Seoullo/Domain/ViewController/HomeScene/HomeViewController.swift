@@ -147,28 +147,28 @@ extension HomeViewController: HomeHeaderViewDelegate {
     }
     
     func seoulInfoTouched() {
-        let str = "서울시 소식"
+        let str = "Seoul Info"
         let vc = SeoulInfoViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func infoCenterTouched() {
-        let str = "자료실"
+        let str = "Info Center"
         let vc = InfoCenterViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func employTouched() {
-        let str = "채용 정보"
+        let str = "Employ"
         let vc = EmployViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func educationTouched() {
-        let str = "교육 정보"
+        let str = "Education"
         let vc = EducationViewController()
         vc.title = str
         navigationController?.pushViewController(vc, animated: true)

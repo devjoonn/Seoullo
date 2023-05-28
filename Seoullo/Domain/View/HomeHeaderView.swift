@@ -87,7 +87,7 @@ class HomeHeaderView: UIView {
     let seoulInfoStackView: UIStackView = {
         let image = UIImageView(image: UIImage(named: "news"))
         let str = UILabel()
-        str.text = "서울시 소식"
+        str.text = "Seoul Info"
         str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)
@@ -100,7 +100,7 @@ class HomeHeaderView: UIView {
     let infoCenterStackView: UIStackView = {
         let image = UIImageView(image: UIImage(named: "infoCenter"))
         let str = UILabel()
-        str.text = "자료실"
+        str.text = "Info Center"
         str.textColor = .black
         str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
@@ -114,7 +114,7 @@ class HomeHeaderView: UIView {
     let employStackView: UIStackView = {
         let image = UIImageView(image: UIImage(named: "employ"))
         let str = UILabel()
-        str.text = "채용 정보"
+        str.text = "Employ"
         str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)
@@ -127,7 +127,7 @@ class HomeHeaderView: UIView {
     let educationStackView: UIStackView = {
         let image = UIImageView(image: UIImage(named: "education"))
         let str = UILabel()
-        str.text = "교육 정보"
+        str.text = "Education"
         str.font = UIFont.notoSansRegular(size: 10)
         $0.addArrangedSubview(image)
         $0.addArrangedSubview(str)

@@ -41,6 +41,10 @@ class ScrapViewController: BaseViewController {
         tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
 //MARK: - set UI
     func setUIandConstraints() {
         view.addSubview(tableView)
