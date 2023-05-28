@@ -86,7 +86,7 @@ class HomeTableViewCell: UITableViewCell {
             let formattedDate = dateFormatter.string(from: date)
             // 셀에 대한 정보
             self.titleLabel.text = model.TITL_NM
-            self.contentLabel.text = model.CONT  //ExtesionFunc.stripHTMLTags(from: model.CONT)
+            self.contentLabel.text = ExtesionFunc.stripHTMLTags(from: model.CONT)
             self.endDateLabel.text = formattedDate
         } else {
             print("Invalid date string")

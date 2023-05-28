@@ -100,7 +100,7 @@ class InfoTableViewCell: UITableViewCell {
             self.titleLabel.text = model.TITL_NM
             self.modificationDateLabel.text = formattedDate
             self.heartImage.isSelected = scrap
-            self.contentLabel.text = model.CONT
+            self.contentLabel.text = ExtesionFunc.stripHTMLTags(from: model.CONT)
         } else {
             print("Invalid date string")
         }

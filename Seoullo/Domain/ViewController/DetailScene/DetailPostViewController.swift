@@ -66,6 +66,7 @@ class DetailPostViewController: BaseViewController {
             self.writerOrQualification.text = showScrapModel.first?.writerOrQualification
             self.updateDate.text = showScrapModel.first?.updateDate
             self.webView.loadHTMLString(content+headerString, baseURL: nil)
+            self.contentLabel.text = content
         }
     }
     
@@ -274,12 +275,12 @@ class DetailPostViewController: BaseViewController {
                 let pushModel = ScrapModel()
                 pushModel.id = generateNewUniqueKey()
                 pushModel.title = titleLabel.text ?? ""
-                pushModel.category = categoryName
+                pushModel.category = self.title ?? ""
                 pushModel.writerOrQualification = writerOrQualification.text ?? ""
                 pushModel.updateDate = updateDate.text ?? ""
                 pushModel.content = contentLabel.text ?? ""
                 realm.add(pushModel)
-                realm.refresh()
+//                realm.refresh()
                 // 버튼의 이미지 분기처리
                 scrapButton.isSelected = true
                 print("스크랩 완료")
@@ -289,7 +290,7 @@ class DetailPostViewController: BaseViewController {
                 print("삭제전")
                 try! realm.write {
                     realm.delete(existingScrapModel)
-                    realm.refresh()
+//                    realm.refresh()
                     // 버튼의 이미지 분기처리
                     scrapButton.isSelected = false
                     print("스크랩 삭제")

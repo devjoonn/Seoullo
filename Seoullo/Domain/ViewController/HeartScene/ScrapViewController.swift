@@ -42,6 +42,8 @@ class ScrapViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        scrapModel.removeAll()
+        modelSortedDate()
         tableView.reloadData()
     }
     
