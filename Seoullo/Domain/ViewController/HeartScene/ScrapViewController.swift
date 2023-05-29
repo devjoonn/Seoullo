@@ -58,7 +58,7 @@ class ScrapViewController: BaseViewController {
     
     // 날짜순으로 리스트 정렬
     func modelSortedDate() {
-        let scrapData = realm.objects(ScrapModel.self)
+        let scrapData = realm.objects(ScrapModel.self).sorted(byKeyPath: "timeStamp", ascending: false)
         scrapModel = scrapData.compactMap{ $0 }
     }
     

@@ -15,6 +15,7 @@ class ScrapModel: Object {
     @objc dynamic var writerOrQualification: String = ""
     @objc dynamic var updateDate: String = ""
     @objc dynamic var content: String = ""
+    @objc dynamic var timeStamp: String = ""
     
     
     // title 이 고유 값입니다.

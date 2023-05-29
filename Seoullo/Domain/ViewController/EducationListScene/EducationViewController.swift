@@ -178,15 +178,15 @@ extension EducationViewController: InfoHeaderViewDelegate {
         let vc = WebViewController()
         switch index {
         case 0:
-            vc.url = URL(string: "https://www.isi.go.kr/")
+            vc.url = URL(string: Secret.bannerFristURL)
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            vc.url = URL(string: "https://global.seoul.go.kr/web/news/senw/bordContDetail.do?mode=W&brd_no=5&post_no=F49F20C01A3601C6E053C0A8A023B7B0&lang=ko")
+            vc.url = URL(string: Secret.bannerSecondURL)
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         case 2:
-            vc.url = URL(string: "https://global.seoul.go.kr/web/news/senw/bordContDetail.do?mode=W&brd_no=5&post_no=F804C2B1E8950174E053C0A8A0233774&lang=ko")
+            vc.url = URL(string: Secret.bannerThirdURL)
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         default:

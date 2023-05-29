@@ -279,6 +279,7 @@ class DetailPostViewController: BaseViewController {
                 pushModel.writerOrQualification = writerOrQualification.text ?? ""
                 pushModel.updateDate = updateDate.text ?? ""
                 pushModel.content = contentLabel.text ?? ""
+                pushModel.timeStamp = getCurrentTimeString()
                 realm.add(pushModel)
                 // 버튼의 이미지 분기처리
                 scrapButton.isSelected = true
@@ -295,6 +296,14 @@ class DetailPostViewController: BaseViewController {
                 }
             }
         }
+    }
+    
+    //현재 시간 String으로 생성
+    func getCurrentTimeString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let currentTimeString = dateFormatter.string(from: Date())
+        return currentTimeString
     }
     
     // id의 uuid가 같아서 새로 생성

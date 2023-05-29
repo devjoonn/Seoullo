@@ -27,12 +27,9 @@ class BaseTapBarController: UITabBarController {
         let secondVC = ScrapViewController()
         let nav2 = templateNavigationController(UIImage(systemName: "heart"), UIImage(systemName: "heart.fill"), title: "Like", viewController: secondVC)
         
-        // 세번째 탭
-        let thirdVC = SettingViewController()
-        let nav3 = templateNavigationController(UIImage(systemName: "gearshape"), UIImage(systemName: "gearshape.fill"), title: "Setting", viewController: thirdVC)
         
         // 탭들 Setup
-        viewControllers = [nav1, nav2, nav3]
+        viewControllers = [nav1, nav2]
     }
     
     // 네비게이션 컨트롤러 만들기

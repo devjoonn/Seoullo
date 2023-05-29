@@ -17,8 +17,8 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
-//        // 아예 Realm 파일 삭제
-//        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+        // 아예 Realm 파일 삭제
+        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
 //        let realmURLs = [
 //            realmURL,
 //            realmURL.appendingPathExtension("lock"),

@@ -223,7 +223,7 @@ extension HomeViewController: HomeHeaderViewDelegate {
     }
     
     func governmentTouched() {
-        let url = URL(string: "https://www.gov.kr/portal/main")
+        let url = URL(string: "https://www.gov.kr/portal/foreigner/ko")
         let vc = WebViewController()
         vc.title = "정부 24"
         vc.url = url
