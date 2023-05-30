@@ -19,11 +19,12 @@ class HomeViewController: BaseViewController {
     }
 
 //MARK: - Quiz
-    let quizModel: [QuizModel] = [QuizModel(title: "Q. '부쳐지내다'과 '붙여지내다' 어떤 것이 맞는 말?", leftAnswer: "그 집에서 잠시 붙여지내고 있어.", rightAnswer: "그 집에서 잠시 부쳐지내고 있어.", answer: "그 집에서 잠시 부쳐지내고 있어."),
-                                  QuizModel(title: "Q. '그런데도'와 '그런대도' 어떤 것이 맞는 말?", leftAnswer: "그런데도 지금까지 모르고 있었다니!", rightAnswer: "그런대도 지금까지 모르고 있었다니!", answer: "그런데도 지금까지 모르고 있었다니!"),
-                                  QuizModel(title: "Q. '자살률'과 '자살율' 어떤 것이 맞는 말?", leftAnswer: "자살률이 낮아지고 있다.", rightAnswer: "자살율이 낮아지고 있다.", answer: "자살률이 낮아지고 있다."),
-                                  QuizModel(title: "Q. '어쭙잖게'와 '어줍잖게' 어떤 것이 맞는 말?", leftAnswer: "어쭙잖게 꾀를 부린다.", rightAnswer: "어줍잖게 꾀를 부린다.", answer: "어쭙잖게 꾀를 부린다."),
-                                  QuizModel(title: "Q. '섭취량'과 '섭취양' 어떤 것이 맞는 말?", leftAnswer: "하루 섭취량을 넘었습니다.", rightAnswer: "하루 섭취양을 넘었습니다.", answer: "하루 섭취량을 넘었습니다.")
+    let quizModel: [QuizModel] = [
+                                  QuizModel(title: "Q. '그런데도'와 '그런대도' 중 맞는 표현은?", leftAnswer: "그런데도", rightAnswer: "그런대도", answer: "그런데도"),
+                                  QuizModel(title: "Q. '사돈'과 '사둔' 중 맞는 표현은?", leftAnswer: "사둔 어른", rightAnswer: "사돈 어른", answer: "사돈 어른"),
+                                  QuizModel(title: "Q. '자살률'과 '자살율' 중 맞는 표현은?", leftAnswer: "자살률", rightAnswer: "자살율", answer: "자살률"),
+                                  QuizModel(title: "Q. '어쭙잖게'와 '어줍잖게' 중 맞는 표현은?", leftAnswer: "어줍잖게", rightAnswer: "어쭙잖게", answer: "어쭙잖게"),
+                                  QuizModel(title: "Q. '섭취량'과 '섭취양' 중 맞는 표현은?", leftAnswer: "섭취량", rightAnswer: "섭취양", answer: "섭취량")
     ]
     var currentQuizIndex = 0
     
@@ -32,19 +33,33 @@ class HomeViewController: BaseViewController {
         
         // 매일 새로운 인덱스로 업데이트
         if !Calendar.current.isDateInToday(currentDate) {
-            currentQuizIndex += 1
-            print(currentQuizIndex)
             
-            if self.currentQuizIndex >= self.quizModel.count {
-                self.currentQuizIndex = 0 // 배열의 마지막 인덱스 이후에는 다시 첫 번째 인덱스로 설정
+            // Realm에서 해당 인덱스의 객체를 가져옴
+            if let quizDateModel = realm.objects(QuizDateModel.self).filter("index == %@", currentQuizIndex).first {
+                // 화면이 켜지면 Realm 데이터베이스의 index 값을 업데이트
+                currentQuizIndex = quizDateModel.index
+            }
+            
+            currentQuizIndex += 1
+            // Realm 데이터베이스의 index 값을 업데이트
+            if let quizDateModel = realm.objects(QuizDateModel.self).filter("index == %@", currentQuizIndex).first {
+                try! realm.write {
+                    quizDateModel.index = currentQuizIndex + 1
+                }
+            }
+            
+            if currentQuizIndex >= quizModel.count {
+                currentQuizIndex = 0 // 배열의 마지막 인덱스 이후에는 다시 첫 번째 인덱스로 설정
+                
+                // Realm 데이터베이스의 index 값을 0으로 되돌림
+                if let quizDateModel = realm.objects(QuizDateModel.self).filter("index == %@", currentQuizIndex).first {
+                    try! realm.write {
+                        quizDateModel.index = 0
+                    }
+                }
             }
         }
-        
-        return self.quizModel[currentQuizIndex]
-    }
-    
-    func modelSortedDate() {
-//        let scrapData = realm.objects(QuizDateModel.self).sorted(byKeyPath: "index", ascending: false)
+        return quizModel[currentQuizIndex]
     }
     
     func updateQuiz() {

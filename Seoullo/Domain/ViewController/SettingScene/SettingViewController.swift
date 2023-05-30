@@ -17,8 +17,21 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
+//        let searchPostTitle = realm.objects(QuizDateModel.self)
+//
+//        if searchPostTitle.isEmpty {
+//            try! realm.write {
+//                let quizModel = QuizDateModel()
+//                quizModel.index = 0
+//
+//                realm.add(quizModel)
+//            }
+//        }
+        
+        
+        
         // 아예 Realm 파일 삭제
-        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+//        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
 //        let realmURLs = [
 //            realmURL,
 //            realmURL.appendingPathExtension("lock"),
@@ -33,6 +46,8 @@ class SettingViewController: BaseViewController {
 //                // handle error
 //            }
 //        }
+        
+
     }
     
 
