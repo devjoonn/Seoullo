@@ -21,7 +21,7 @@ class DetailPostViewController: BaseViewController {
             guard let writer = rowModel.first?.WRIT_NM else { return }
             guard let content = rowModel.first?.CONT else { return }
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyyMMddHHmmss"
+            dateFormatter.dateFormat = "yyyy-MM-dd"
             if let date = dateFormatter.date(from: rowModel.first?.UPD_DT ?? "") {
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 let formattedDate = dateFormatter.string(from: date)

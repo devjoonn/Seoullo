@@ -309,7 +309,7 @@ class HomeHeaderView: UIView {
             make.center.equalToSuperview()
         }
         categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(quizBackgourndView.snp.bottom).inset(-35)
+            make.top.equalTo(quizBackgourndView.snp.bottom).inset(-55)
             make.leading.equalToSuperview().inset(20)
         }
         categoryStackView.snp.makeConstraints { make in
@@ -321,7 +321,7 @@ class HomeHeaderView: UIView {
             make.leading.trailing.equalToSuperview().inset(20)
         }
         tableViewLabel.snp.makeConstraints { make in
-            make.top.equalTo(categorySecondStackView.snp.bottom).inset(-35)
+            make.top.equalTo(categorySecondStackView.snp.bottom).inset(-55)
             make.leading.equalToSuperview().inset(20)
         }
     }

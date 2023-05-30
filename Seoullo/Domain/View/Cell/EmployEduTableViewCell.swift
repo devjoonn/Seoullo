@@ -112,7 +112,7 @@ class EmployEduTableViewCell: UITableViewCell {
             guard let model = rowModel else { return }
             
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyyMMddHHmmss"
+            dateFormatter.dateFormat = "yyyy-MM-dd"
             if let date = dateFormatter.date(from: model.UPD_DT) {
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 let formattedDate = dateFormatter.string(from: date)

@@ -18,7 +18,7 @@ class HomeViewController: BaseViewController {
 
 //MARK: - Properties
     
-    lazy var homeHeaderView = HomeHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 500))
+    lazy var homeHeaderView = HomeHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 550))
     
     lazy var tableView: UITableView = {
         $0.tableHeaderView = homeHeaderView
@@ -30,6 +30,7 @@ class HomeViewController: BaseViewController {
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         network() { model in
             let sortModel = RowModel.sortDatesRowModel(model)
             self.infoModel = sortModel
@@ -47,6 +48,7 @@ class HomeViewController: BaseViewController {
         var model = [RowModel]()
         
         NetworkManager.shared.employGet(1,4) { employment in
+            print("a DEBUG :\(employment.count)")
             model.append(employment[0])
             model.append(employment[1])
             model.append(employment[2])
@@ -56,6 +58,7 @@ class HomeViewController: BaseViewController {
             }
         }
         NetworkManager.shared.infoCenterGet(1,4) { infoCenter in
+            print("b DEBUG :\(infoCenter.count)")
             model.append(infoCenter[0])
             model.append(infoCenter[1])
             model.append(infoCenter[2])
@@ -65,6 +68,7 @@ class HomeViewController: BaseViewController {
             }
         }
         NetworkManager.shared.seoulInfoGet(1,4) { seoulInfo in
+            print("c DEBUG :\(seoulInfo.count)")
             model.append(seoulInfo[0])
             model.append(seoulInfo[1])
             model.append(seoulInfo[2])
@@ -96,6 +100,7 @@ class HomeViewController: BaseViewController {
         logoImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         navigationItem.leftBarButtonItem = imageItem
     }
+
 }
 
 
@@ -108,7 +113,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier) as? HomeTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         let model = RowModel.sortDatesRowModel(infoModel)[indexPath.row]
-        
         // 로컬 DB 불러와 찾아서 일치하는게 있으면 좋아요 하트 들어오게
         // 중복이 되는게 있다면 네트워크 받아온다음에 중복 제거
         
@@ -143,7 +147,7 @@ extension HomeViewController: HomeHeaderViewDelegate {
                 make.width.equalTo(100)
             }
             self.homeHeaderView.answerBackView.alpha = 0.5
-            self.homeHeaderView.answerLabel.text = "틀렸습니다."
+            self.homeHeaderView.answerLabel.text = "틀렸습니다"
         }) { _ in
             // tableView 애니메이션
             UIView.animate(withDuration: 2, animations: {
@@ -214,7 +218,7 @@ extension HomeViewController: HomeHeaderViewDelegate {
     }
     
     func hrdkTouched() {
-        let url = URL(string: "https://www.hrdkorea.or.kr/3/2/2/1")
+        let url = URL(string: "https://eps.hrdkorea.or.kr/main/intro.do")
         let vc = WebViewController()
         vc.title = "산업인력공단"
         vc.url = url

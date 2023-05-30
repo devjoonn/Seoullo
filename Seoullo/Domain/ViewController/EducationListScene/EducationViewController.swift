@@ -21,6 +21,7 @@ class EducationViewController: BaseViewController {
     var educationModel: [EduModel] = [] {
         didSet {
             self.tableView.reloadData()
+            print(educationModel)
         }
     }
     
