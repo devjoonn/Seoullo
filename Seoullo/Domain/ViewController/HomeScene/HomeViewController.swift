@@ -15,6 +15,7 @@ class HomeViewController: BaseViewController {
     private var timer: Timer?
     var infoModel: [RowModel] = [] {
         didSet {
+            LoadingService.hideLoading()
             self.tableView.reloadData()
         }
     }
@@ -132,7 +133,7 @@ class HomeViewController: BaseViewController {
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        LoadingService.showLoading()
         network() { model in
             let sortModel = RowModel.sortDatesRowModel(model)
             self.infoModel = sortModel

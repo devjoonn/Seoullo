@@ -20,6 +20,7 @@ class EmployViewController: BaseViewController {
     
     var employModel: [RowModel] = [] {
         didSet {
+            LoadingService.hideLoading()
             self.tableView.reloadData()
         }
     }
@@ -39,6 +40,7 @@ class EmployViewController: BaseViewController {
         super.viewDidLoad()
         ExtesionFunc.setupNavigationBackBar(self)
         network()
+        LoadingService.showLoading()
         
         infoHeaderView.delegate = self
         tableView.delegate = self
@@ -127,6 +129,7 @@ extension EmployViewController: UITableViewDelegate, UITableViewDataSource, UISc
         
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
+        spinner.color = UIColor.seoulloOrange
         footerView.addSubview(spinner)
         spinner.startAnimating()
         

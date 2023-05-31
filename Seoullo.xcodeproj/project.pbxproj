@@ -42,6 +42,7 @@
 		478AA7E02A21DB6C00EF3533 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7DF2A21DB6C00EF3533 /* WebViewController.swift */; };
 		478AA7E22A21E8BA00EF3533 /* ScrapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AA7E12A21E8BA00EF3533 /* ScrapModel.swift */; };
 		478AA7E52A21E97300EF3533 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 478AA7E42A21E97300EF3533 /* RealmSwift */; };
+		47E85BA42A2737C700F617ED /* LodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E85BA32A2737C700F617ED /* LodingService.swift */; };
 		47EEB2BE2A21FBB500C288D5 /* ScrapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EEB2BD2A21FBB500C288D5 /* ScrapTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		478AA7DD2A209C9D00EF3533 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		478AA7DF2A21DB6C00EF3533 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		478AA7E12A21E8BA00EF3533 /* ScrapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapModel.swift; sourceTree = "<group>"; };
+		47E85BA32A2737C700F617ED /* LodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodingService.swift; sourceTree = "<group>"; };
 		47EEB2BD2A21FBB500C288D5 /* ScrapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,12 +133,13 @@
 			path = SettingScene;
 			sourceTree = "<group>";
 		};
-		47548E3F2A1E32C700A5BB40 /* HeartScene */ = {
+		47548E3F2A1E32C700A5BB40 /* ScrapScene */ = {
 			isa = PBXGroup;
 			children = (
 				47548E362A1E26CC00A5BB40 /* ScrapViewController.swift */,
 			);
-			path = HeartScene;
+			name = ScrapScene;
+			path = "ㄴㅊㄱ메Scene";
 			sourceTree = "<group>";
 		};
 		47665ADD2A1CD24A00A95154 /* Extension */ = {
@@ -201,6 +204,7 @@
 				4786C8522A1AF2FF006AAF43 /* AppDelegate.swift */,
 				4786C8542A1AF2FF006AAF43 /* SceneDelegate.swift */,
 				4786C87E2A1B1E4D006AAF43 /* Secret.swift */,
+				47E85BA32A2737C700F617ED /* LodingService.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -224,7 +228,7 @@
 				478AA7D12A20761700EF3533 /* EmployListScene */,
 				478AA7D02A2075F700EF3533 /* EducationListScene */,
 				47548E3D2A1E329B00A5BB40 /* HomeScene */,
-				47548E3F2A1E32C700A5BB40 /* HeartScene */,
+				47548E3F2A1E32C700A5BB40 /* ScrapScene */,
 				47548E3E2A1E32BE00A5BB40 /* SettingScene */,
 			);
 			path = ViewController;
@@ -392,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E85BA42A2737C700F617ED /* LodingService.swift in Sources */,
 				4786C8572A1AF2FF006AAF43 /* HomeViewController.swift in Sources */,
 				47665AE82A1CD47D00A95154 /* UIFont.swift in Sources */,
 				47665AD92A1C98CD00A95154 /* Extensions.swift in Sources */,

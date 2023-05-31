@@ -20,8 +20,8 @@ class EducationViewController: BaseViewController {
     
     var educationModel: [EduModel] = [] {
         didSet {
+            LoadingService.hideLoading()
             self.tableView.reloadData()
-            print(educationModel)
         }
     }
     
@@ -40,6 +40,7 @@ class EducationViewController: BaseViewController {
         super.viewDidLoad()
         ExtesionFunc.setupNavigationBackBar(self)
         network()
+        LoadingService.showLoading()
         
         infoHeaderView.delegate = self
         tableView.delegate = self
@@ -127,6 +128,7 @@ extension EducationViewController: UITableViewDelegate, UITableViewDataSource, U
         
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
+        spinner.color = UIColor.seoulloOrange
         footerView.addSubview(spinner)
         spinner.startAnimating()
         

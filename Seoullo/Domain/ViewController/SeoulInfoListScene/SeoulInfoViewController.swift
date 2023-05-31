@@ -20,6 +20,7 @@ class SeoulInfoViewController: BaseViewController {
     
     var seoulInfoModel: [RowModel] = [] {
         didSet {
+            LoadingService.hideLoading()
             self.tableView.reloadData()
         }
     }
@@ -39,6 +40,7 @@ class SeoulInfoViewController: BaseViewController {
         super.viewDidLoad()
         ExtesionFunc.setupNavigationBackBar(self)
         network()
+        LoadingService.showLoading()
         
         infoHeaderView.delegate = self
         tableView.delegate = self
@@ -128,6 +130,7 @@ extension SeoulInfoViewController: UITableViewDelegate, UITableViewDataSource, U
         
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
+        spinner.color = UIColor.seoulloOrange
         footerView.addSubview(spinner)
         spinner.startAnimating()
         

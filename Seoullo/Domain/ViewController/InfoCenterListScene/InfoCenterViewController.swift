@@ -21,6 +21,7 @@ class InfoCenterViewController: BaseViewController {
     
     var infoCenterModel: [RowModel] = [] {
         didSet {
+            LoadingService.hideLoading()
             self.tableView.reloadData()
         }
     }
@@ -40,6 +41,7 @@ class InfoCenterViewController: BaseViewController {
         super.viewDidLoad()
         ExtesionFunc.setupNavigationBackBar(self)
         network()
+        LoadingService.showLoading()
         
         infoHeaderView.delegate = self
         tableView.delegate = self
@@ -127,6 +129,7 @@ extension InfoCenterViewController: UITableViewDelegate, UITableViewDataSource, 
         
         let spinner = UIActivityIndicatorView()
         spinner.center = footerView.center
+        spinner.color = UIColor.seoulloOrange
         footerView.addSubview(spinner)
         spinner.startAnimating()
         
