@@ -81,12 +81,12 @@ class EmployEduTableViewCell: UITableViewCell {
             make.height.equalTo(0.5)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(line.snp.bottom).inset(-13)
+            make.top.equalTo(line.snp.bottom).inset(-17)
             make.leading.equalToSuperview().inset(23)
             make.trailing.equalToSuperview().inset(55)
         }
         writerOrQualificationLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).inset(-12)
+            make.top.equalTo(titleLabel.snp.bottom).inset(-15)
             make.leading.equalToSuperview().inset(23)
             make.width.equalTo(100)
         }

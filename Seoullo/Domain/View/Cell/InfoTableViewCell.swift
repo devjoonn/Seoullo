@@ -24,13 +24,6 @@ class InfoTableViewCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    lazy var contentLabel: UILabel = {
-        $0.text = "내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요."
-        $0.font = UIFont.notoSansRegular(size: 11)
-        $0.numberOfLines = 2
-        return $0
-    }(UILabel())
-    
     lazy var modificationDateLabel: UILabel = {
         $0.text = "2023.05.26"
         $0.font = UIFont.notoSansRegular(size: 10)
@@ -60,7 +53,6 @@ class InfoTableViewCell: UITableViewCell {
     func setUIandConstraints() {
         addSubview(line)
         addSubview(titleLabel)
-        addSubview(contentLabel)
         addSubview(modificationDateLabel)
         addSubview(heartImage)
         
@@ -70,18 +62,13 @@ class InfoTableViewCell: UITableViewCell {
             make.height.equalTo(0.5)
         }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(line.snp.bottom).inset(-10)
+            make.top.equalTo(line.snp.bottom).inset(-17)
             make.leading.equalToSuperview().inset(23)
             make.trailing.equalToSuperview().inset(75)
         }
-        contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).inset(-9)
-            make.leading.equalToSuperview().inset(23)
-            make.trailing.equalTo(heartImage.snp.leading).inset(-10)
-        }
         modificationDateLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(titleLabel.snp.centerY)
-            make.trailing.equalToSuperview().inset(18)
+            make.top.equalTo(titleLabel.snp.bottom).inset(-17)
+            make.leading.equalToSuperview().inset(23)
         }
         heartImage.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
@@ -100,7 +87,7 @@ class InfoTableViewCell: UITableViewCell {
             self.titleLabel.text = model.TITL_NM
             self.modificationDateLabel.text = formattedDate
             self.heartImage.isSelected = scrap
-            self.contentLabel.text = ExtesionFunc.stripHTMLTags(from: model.CONT)
+//            self.contentLabel.text = ExtesionFunc.stripHTMLTags(from: model.CONT)
         } else {
             print("Invalid date string")
         }
