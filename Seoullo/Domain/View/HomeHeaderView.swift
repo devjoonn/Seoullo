@@ -9,8 +9,8 @@ import UIKit
 import SnapKit
 
 protocol HomeHeaderViewDelegate: AnyObject {
-    func leftButtonTouched()
-    func rightButtonTouched()
+    func leftButtonTouched(_ answer: String)
+    func rightButtonTouched(_ answer: String)
     func seoulInfoTouched()
     func infoCenterTouched()
     func employTouched()
@@ -22,6 +22,8 @@ protocol HomeHeaderViewDelegate: AnyObject {
 }
 
 class HomeHeaderView: UIView {
+    
+    var quizAnswer = ""
     
     //MARK: - Properties
     
@@ -328,11 +330,19 @@ class HomeHeaderView: UIView {
     
 //MARK: - functuion
     @objc func leftAnswerHandler() {
-        delegate?.leftButtonTouched()
+        if self.leftAnswer.titleLabel?.text == self.quizAnswer {
+            delegate?.leftButtonTouched("정답입니다.")
+        } else {
+            delegate?.leftButtonTouched("틀렸습니다.")
+        }
     }
     
     @objc func rightAnswerHandler() {
-        delegate?.rightButtonTouched()
+        if self.rightAnswer.titleLabel?.text == self.quizAnswer {
+            delegate?.rightButtonTouched("정답입니다.")
+        } else {
+            delegate?.rightButtonTouched("틀렸습니다.")
+        }
     }
     
     @objc func seoulInfoHandler() {

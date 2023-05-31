@@ -23,3 +23,5 @@ class ScrapModel: Object {
       return "id"
     }
 }
+
+

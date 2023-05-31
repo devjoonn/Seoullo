@@ -110,7 +110,7 @@ extension ScrapViewController: UITableViewDelegate, UITableViewDataSource {
             }
             success(true)
         }
-        delete.backgroundColor = UIColor.rgb(red: 255, green: 35, blue: 1)
+        delete.backgroundColor = UIColor.rgb(red: 255, green: 69, blue: 57)
         
         //actions배열 인덱스 0이 왼쪽에 붙어서 나옴
         return UISwipeActionsConfiguration(actions:[ delete ])
