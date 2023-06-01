@@ -12,7 +12,9 @@ import RealmSwift
 
 class DetailPostViewController: BaseViewController {
     
-    let headerString = "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>"
+    let headerString = """
+    <header> <meta name="viewport" content="width=device-width, shrink-to-fit=YES"/>
+    """
     lazy var categoryName = ""
     
     var rowModel = [RowModel]() {
@@ -151,7 +153,6 @@ class DetailPostViewController: BaseViewController {
         $0.scrollView.showsVerticalScrollIndicator = false
         $0.scrollView.showsHorizontalScrollIndicator = false
         $0.scrollView.isScrollEnabled = false
-        $0.backgroundColor = .white
         return $0
     }(WKWebView())
     
