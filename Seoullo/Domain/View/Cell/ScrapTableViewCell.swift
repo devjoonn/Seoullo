@@ -39,6 +39,11 @@ class ScrapTableViewCell: UITableViewCell {
         return $0
     }(UILabel())
     
+    lazy var heartImage: UIButton = {
+        $0.setImage(UIImage(named: "tableHeart"), for: .normal)
+        return $0
+    }(UIButton())
+    
     
 //MARK: - Life Cycles
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -58,6 +63,7 @@ class ScrapTableViewCell: UITableViewCell {
         addSubview(categoryLabel)
         addSubview(titleLabel)
         addSubview(modificationDateLabel)
+        addSubview(heartImage)
         
         line.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -76,6 +82,11 @@ class ScrapTableViewCell: UITableViewCell {
         modificationDateLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).inset(-5)
             make.leading.equalToSuperview().inset(23)
+        }
+        heartImage.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(30)
+            make.height.width.equalTo(26)
         }
     }
     
