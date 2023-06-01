@@ -15,7 +15,6 @@ class HomeViewController: BaseViewController {
     private var timer: Timer?
     var infoModel: [RowModel] = [] {
         didSet {
-            LoadingService.hideLoading()
             self.tableView.reloadData()
         }
     }
@@ -26,7 +25,31 @@ class HomeViewController: BaseViewController {
                                   QuizModel(title: "Q. '사돈'과 '사둔' 중 맞는 표현은?", leftAnswer: "사둔 어른", rightAnswer: "사돈 어른", answer: "사돈 어른"),
                                   QuizModel(title: "Q. '자살률'과 '자살율' 중 맞는 표현은?", leftAnswer: "자살률", rightAnswer: "자살율", answer: "자살률"),
                                   QuizModel(title: "Q. '어쭙잖게'와 '어줍잖게' 중 맞는 표현은?", leftAnswer: "어줍잖게", rightAnswer: "어쭙잖게", answer: "어쭙잖게"),
-                                  QuizModel(title: "Q. '섭취량'과 '섭취양' 중 맞는 표현은?", leftAnswer: "섭취량", rightAnswer: "섭취양", answer: "섭취량")
+                                  QuizModel(title: "Q. '섭취량'과 '섭취양' 중 맞는 표현은?", leftAnswer: "섭취량", rightAnswer: "섭취양", answer: "섭취량"),
+                                  QuizModel(title: "Q. '중구난방'과 '중구남방' 중 맞는 표현은?", leftAnswer: "중구난방", rightAnswer: "중구남방", answer: "중구난방"),
+                                  QuizModel(title: "Q. '짭짤하다'와 '짭잘하다' 중 맞는 표현은?", leftAnswer: "짭짤하다", rightAnswer: "짭잘하다", answer: "짭짤하다"),
+                                  QuizModel(title: "Q. '짝짜꿍'과 '짝짝꿍' 중 맞는 표현은?", leftAnswer: "짝짜꿍", rightAnswer: "짝짝꿍", answer: "짝짜꿍"),
+                                  QuizModel(title: "Q. '일일히'와 '일일이' 중 맞는 표현은?", leftAnswer: "일일히", rightAnswer: "일일이", answer: "일일이"),
+                                  QuizModel(title: "Q. '동고동락'과 '동거동락' 중 맞는 표현은?", leftAnswer: "동거동락", rightAnswer: "동고동락", answer: "동고동락"),
+                                  QuizModel(title: "Q. '육개장'과 '육계장' 중 맞는 표현은?", leftAnswer: "육개장", rightAnswer: "육계장", answer: "육개장"),
+                                  QuizModel(title: "Q. '뛰다시피'와 '뛰다싶이' 중 맞는 표현은?", leftAnswer: "뛰다싶이", rightAnswer: "뛰다시피", answer: "뛰다시피"),
+                                  QuizModel(title: "Q. '백분율'과 '백분률' 중 맞는 표현은?", leftAnswer: "백분율", rightAnswer: "백분률", answer: "백분율"),
+                                  QuizModel(title: "Q. '방방곡곡'과 '방방곳곳' 중 맞는 표현은?", leftAnswer: "방방곡곡", rightAnswer: "방방곳곳", answer: "방방곡곡"),
+                                  QuizModel(title: "Q. '머릿말'과 '머리말' 중 맞는 표현은?", leftAnswer: "머릿말", rightAnswer: "머리말", answer: "머리말"),
+                                  QuizModel(title: "Q. '새우젓'과 '새우젖' 중 맞는 표현은?", leftAnswer: "새우젓", rightAnswer: "새우젖", answer: "새우젓"),
+                                  QuizModel(title: "Q. '찿다'와 '찾다' 중 맞는 표현은?", leftAnswer: "찾다", rightAnswer: "찿다", answer: "찾다"),
+                                  QuizModel(title: "Q. '굳이'와 '구지' 중 맞는 표현은?", leftAnswer: "굳이", rightAnswer: "구지", answer: "굳이"),
+                                  QuizModel(title: "Q. '뒤좇았다'와 '뒤쫓았다' 중 맞는 표현은?", leftAnswer: "뒤쫓았다", rightAnswer: "뒤좇았다", answer: "뒤쫓았다"),
+                                  QuizModel(title: "Q. '새로히'와 '새로이' 중 맞는 표현은?", leftAnswer: "새로히", rightAnswer: "새로이", answer: "새로이"),
+                                  QuizModel(title: "Q. '멋장이'와 '멋쟁이' 중 맞는 표현은?", leftAnswer: "멋쟁이", rightAnswer: "멋장이", answer: "멋쟁이"),
+                                  QuizModel(title: "Q. '교수로서'와 '교수로써' 중 맞는 표현은?", leftAnswer: "교수로서", rightAnswer: "교수로써", answer: "교수로서"),
+                                  QuizModel(title: "Q. '베짱'과 '배짱' 중 맞는 표현은?", leftAnswer: "배짱", rightAnswer: "베짱", answer: "배짱"),
+                                  QuizModel(title: "Q. '해돋이'와 '해도지' 중 맞는 표현은?", leftAnswer: "해돋이", rightAnswer: "해도지", answer: "해돋이"),
+                                  QuizModel(title: "Q. '살던 집'과 '살든 집' 중 맞는 표현은?", leftAnswer: "살던 집", rightAnswer: "살든 집", answer: "살던 집"),
+                                  QuizModel(title: "Q. '툇마루'와 '튓마루' 중 맞는 표현은?", leftAnswer: "툇마루", rightAnswer: "튓마루", answer: "툇마루"),
+                                  QuizModel(title: "Q. '오랜만에'과 '오랫만에' 중 맞는 표현은?", leftAnswer: "오랜만에", rightAnswer: "오랫만에", answer: "오랜만에"),
+                                  QuizModel(title: "Q. '우려먹다'과 '울궈먹다' 중 맞는 표현은?", leftAnswer: "우려먹다", rightAnswer: "울궈먹다", answer: "우려먹다"),
+                                  QuizModel(title: "Q. '흐름량'과 '흐름양' 중 맞는 표현은?", leftAnswer: "흐름량", rightAnswer: "흐름양", answer: "흐름양")
     ]
     var currentQuizIndex = 0
     var savedDay = "2023-05-31"
@@ -133,7 +156,6 @@ class HomeViewController: BaseViewController {
 //MARK: - Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoadingService.showLoading()
         network() { model in
             let sortModel = RowModel.sortDatesRowModel(model)
             self.infoModel = sortModel

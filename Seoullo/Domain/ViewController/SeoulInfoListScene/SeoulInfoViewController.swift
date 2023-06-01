@@ -51,6 +51,10 @@ class SeoulInfoViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        LoadingService.hideLoading()
+    }
 
 //MARK: - API Handler
     func network() {

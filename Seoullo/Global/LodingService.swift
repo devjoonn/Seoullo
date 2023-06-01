@@ -21,7 +21,12 @@ class LoadingService {
             } else { // 새로 만들기.
                 loadingIndicatorView = UIActivityIndicatorView(style: .large)
                 // 아래는 다른 UI를 클릭하는 것 방지.
-                loadingIndicatorView.frame = window.frame
+                loadingIndicatorView.frame = CGRect(
+                    x: (window.bounds.width - 150) / 2,
+                    y: (window.bounds.height - 150) / 2,
+                    width: 150,
+                    height: 150
+                )
                 loadingIndicatorView.color = UIColor.seoulloOrange
 
                 window.addSubview(loadingIndicatorView)
