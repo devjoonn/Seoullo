@@ -12,6 +12,7 @@ import RealmSwift
 class HomeViewController: BaseViewController {
     
     let realm = try! Realm()
+    private var timer: Timer?
     var infoModel: [RowModel] = [] {
         didSet {
             self.tableView.reloadData()
@@ -27,34 +28,78 @@ class HomeViewController: BaseViewController {
                                   QuizModel(title: "Q. '섭취량'과 '섭취양' 중 맞는 표현은?", leftAnswer: "섭취량", rightAnswer: "섭취양", answer: "섭취량")
     ]
     var currentQuizIndex = 0
+    var savedDay = "2023-05-31"
     
-    func updateIndexIfNeeded() -> QuizModel? {
-        let currentDate = Date() // 현재 날짜
+//MARK: - 어플을 켰을 때 DB에 퀴즈 모델의 index, 날짜가 저장되어있는지 판단
+    private func initializeCurrentQuizIndex() {
+        // Realm에서 현재의 인덱스 값을 가져옴
+        let currentDate = Date() // 현재 날짜와 시간
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: currentDate)
+
+        let dateOnly = calendar.date(from: components)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = dateFormatter.string(from: dateOnly!)
         
-        // 매일 새로운 인덱스로 업데이트
-        if !Calendar.current.isDateInToday(currentDate) {
-            
-            // Realm에서 해당 인덱스의 객체를 가져옴
-            if let quizDateModel = realm.objects(QuizDateModel.self).filter("index == %@", currentQuizIndex).first {
-                // 화면이 켜지면 Realm 데이터베이스의 index 값을 업데이트
-                currentQuizIndex = quizDateModel.index
-            }
-            
-            currentQuizIndex += 1
-            // Realm 데이터베이스의 index 값을 업데이트
-            if let quizDateModel = realm.objects(QuizDateModel.self).filter("index == %@", currentQuizIndex).first {
-                try! realm.write {
-                    quizDateModel.index = currentQuizIndex + 1
+        let dateModel = realm.objects(QuizDateModel.self)
+        
+        if dateModel.isEmpty {
+            try! realm.write {
+                // 초기 데이터가 저장이 안 되어있을 시
+                let quizModel = QuizDateModel()
+                quizModel.id = "quiz"
+                quizModel.index = 0
+                quizModel.day = formattedDate
+                realm.add(quizModel)
+                DispatchQueue.main.async {
+                    self.homeHeaderView.quizLabel.text = "Q. '그런데도'와 '그런대도' 중 맞는 표현은?"
+                    self.homeHeaderView.leftAnswer.setTitle("그런데도", for: .normal)
+                    self.homeHeaderView.rightAnswer.setTitle("그런대도", for: .normal)
+                    self.homeHeaderView.quizAnswer = "그런데도"
                 }
             }
+        } else {
+            // 초기 데이터가 저장이 되어있을 시
+            if let quizDateModel = realm.objects(QuizDateModel.self).first {
+                currentQuizIndex = quizDateModel.index
+                savedDay = quizDateModel.day
+                print("func currentQuiz index = \(currentQuizIndex)")
+                print("func saved Day = \(savedDay)")
+                updateQuiz()
+            }
+        }
+    }
+    
+//MARK: -
+    func updateIndexIfNeeded() -> QuizModel? {
+        let currentDate = Date() // 현재 날짜와 시간
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: currentDate)
+
+        let dateOnly = calendar.date(from: components)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = dateFormatter.string(from: dateOnly!)
+
+        // DB에 저장된 데이터와 현재 날짜를 비교
+        if formattedDate != savedDay {
+            print("현재시간과 저장된 시간이 다름")
+            currentQuizIndex += 1
             
-            if currentQuizIndex >= quizModel.count {
+            if currentQuizIndex > quizModel.count {
                 currentQuizIndex = 0 // 배열의 마지막 인덱스 이후에는 다시 첫 번째 인덱스로 설정
-                
-                // Realm 데이터베이스의 index 값을 0으로 되돌림
-                if let quizDateModel = realm.objects(QuizDateModel.self).filter("index == %@", currentQuizIndex).first {
+                if let quizDateModel = realm.objects(QuizDateModel.self).filter("id == %@", "quiz").first {
                     try! realm.write {
-                        quizDateModel.index = 0
+                        quizDateModel.index = currentQuizIndex
+                        quizDateModel.day = formattedDate
+                    }
+                }
+            } else {
+                if let quizDateModel = realm.objects(QuizDateModel.self).filter("id == %@", "quiz").first {
+                    try! realm.write {
+                        quizDateModel.index = currentQuizIndex
+                        quizDateModel.day = formattedDate
                     }
                 }
             }
@@ -94,7 +139,7 @@ class HomeViewController: BaseViewController {
         }
         setUIandConstraints()
         setupNavigationBar()
-        updateQuiz()
+        initializeCurrentQuizIndex()
         
         homeHeaderView.delegate = self
         tableView.delegate = self

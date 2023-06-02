@@ -19,12 +19,26 @@ class SettingViewController: BaseViewController {
         
 //        let searchPostTitle = realm.objects(QuizDateModel.self)
 //
+//        let currentDate = Date() // 현재 날짜와 시간
+//        let calendar = Calendar.current
+//        let components = calendar.dateComponents([.year, .month, .day], from: currentDate)
+//
+//        guard let dateOnly = calendar.date(from: components) else { return }
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let formattedDate = dateFormatter.string(from: dateOnly)
+//
+//
 //        if searchPostTitle.isEmpty {
 //            try! realm.write {
 //                let quizModel = QuizDateModel()
+//
 //                quizModel.index = 0
+//                quizModel.day = formattedDate
 //
 //                realm.add(quizModel)
+//                print("add")
 //            }
 //        }
         

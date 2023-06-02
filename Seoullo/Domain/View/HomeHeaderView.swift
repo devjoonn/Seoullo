@@ -296,11 +296,11 @@ class HomeHeaderView: UIView {
         }
         leftAnswer.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(10)
-            make.leading.equalToSuperview().inset(30)
+            make.leading.equalToSuperview().inset(40)
         }
         rightAnswer.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(10)
-            make.trailing.equalToSuperview().inset(30)
+            make.trailing.equalToSuperview().inset(40)
         }
         answerBackView.snp.makeConstraints { make in
             make.top.equalTo(quizBackgourndView.snp.bottom).inset(-10)
