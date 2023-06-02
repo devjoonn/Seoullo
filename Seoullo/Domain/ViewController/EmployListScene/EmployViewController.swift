@@ -26,7 +26,7 @@ class EmployViewController: BaseViewController {
     }
     
 //MARK: - Properties
-    let infoHeaderView = InfoHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 125))
+    let infoHeaderView = InfoHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 8))
     
     lazy var tableView: UITableView = {
         $0.tableHeaderView = infoHeaderView

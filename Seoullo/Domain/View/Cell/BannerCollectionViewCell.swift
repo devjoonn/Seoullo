@@ -16,6 +16,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 12
         $0.contentMode = .scaleAspectFit
+        $0.clipsToBounds = true
         return $0
     }(UIImageView())
     
